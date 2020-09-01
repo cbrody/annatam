@@ -1,0 +1,72 @@
+.jb-custom-wrap {
+	line-height: 21px;
+	padding-left: 5px;
+	width: 642px;
+}
+
+.jb-custom-wrap fieldset {
+	border: 1px solid #cccccc;
+	margin: 6px 0px;
+	padding: 10px;
+}
+
+.jb-column1, .jb-column2, .jb-column3 {
+	display: inline;
+	float: left;
+}
+
+.jb-column1 {
+	white-space: nowrap;
+	width: 160px;
+}
+
+.jb-column2 {
+	width: 448px;
+}
+
+.jb-column3 {
+	width: 150px;
+}
+
+.jb-column2 input, .jb-column2 textarea {
+	width: 100%;
+}
+
+.jb-column2 textarea {
+	font-family: Courier, monospace;
+	line-height: 14px;
+}
+
+.jb-column3 input[type=text], .jb-column3 select {
+	width: 95%;
+}
+
+.jb-column3 input[type=checkbox] {
+	appearance: checkbox;
+	-moz-appearance: checkbox;
+	-webkit-appearance: checkbox;
+}
+
+.jb-column3 input[type=checkbox]:checked:before {
+	content: none;
+}
+
+.jb-column2 input[type=text], .jb-column3 input[type=text] {
+	appearance: text;
+	-moz-appearance: text;
+	-webkit-appearance: text;
+}
+
+.jb-column-clear {
+	clear: left;
+	height: 1px;
+	padding-top: 10px;
+}
+
+#jb-toggle-media {
+	display: block;
+}
+
+#jb-toggle-flickr, #jb-toggle-nextgen, #jb-toggle-picasa  {
+	display: none;
+}

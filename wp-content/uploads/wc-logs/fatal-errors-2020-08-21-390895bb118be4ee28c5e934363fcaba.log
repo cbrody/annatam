@@ -1,0 +1,13 @@
+2020-08-21T03:45:00+00:00 CRITICAL Uncaught Error: Call to a member function get_cart_contents_count() on null in /var/www/clients/client6/web67/web/wp-content/themes/spacious/inc/header-functions.php:91
+Stack trace:
+#0 /var/www/clients/client6/web67/web/wp-content/themes/spacious-child/header.php(184): spacious_cart_icon()
+#1 /var/www/clients/client6/web67/web/wp-includes/template.php(723): require_once('/var/www/client...')
+#2 /var/www/clients/client6/web67/web/wp-includes/template.php(672): load_template()
+#3 /var/www/clients/client6/web67/web/wp-includes/general-template.php(41): locate_template()
+#4 /var/www/clients/client6/web67/web/wp-content/themes/spacious/404.php(9): get_header()
+#5 /var/www/clients/client6/web67/web/wp-includes/template-loader.php(106): include('/var/www/client...')
+#6 /var/www/clients/client6/web67/web/wp-blog-header.php(19): require_once('/var/www/client...')
+#7 /var/www/clients/client6/web67/web/index.php(17): require('/var/www/client...')
+#8 {main}
+  thrown in /var/www/clients/client6/web67/web/wp-content/themes/spacious/inc/header-functions.php on line 91
+

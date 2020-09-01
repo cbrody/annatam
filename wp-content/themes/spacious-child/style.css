@@ -1,0 +1,97 @@
+/*
+Theme Name: AT Spacious
+Theme URI: https://www.annatam.co.uk/spacious-child/
+description: >-
+  Spacious theme for Anna Tam
+Author: Chris Brody
+Author URI: https://cbrody.com
+Template: spacious
+Version: 1.0.0
+*/
+
+body, #page {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+#site-title a {
+    font-size: 65px;
+    font-weight: bold;
+}
+
+#header-left-section, #header-text {
+    float:none;
+    text-align: center;
+}
+
+#header-text-nav-wrap {
+    padding: 0;
+}
+
+#header-right-section {
+    float: left;
+}
+
+#header-left-right,
+.bottom-menu .header-action {
+    float: right !important;
+}
+
+#header-meta {
+    border-bottom: none;
+}
+
+#menu-main {
+	float: none;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.menu-primary-container:after {
+	clear: none;
+}
+
+#site-navigation {
+	width: 95%;
+}
+
+#menu-main li {
+	display: inline-block;
+	float: none;
+}
+
+.site-header .menu-toggle {
+	position: relative !important;
+	background: #5f8aaa;
+	margin: 2em auto 0;
+	padding: 10px 20px;
+}
+
+#site-title {
+	white-space: nowrap;
+}
+
+@media screen and (max-width: 600px) {
+	#header-left-right {
+		float: none !important;
+	}
+	#menu-main li {
+		display: block;
+	}
+	.site-header .menu-toggle {
+		margin-top: 0;
+	}
+}
+
+button {
+	padding: 10px 20px;
+}
+
+#secondary .woocommerce.widget_shopping_cart .cart_list li {
+	margin-left: 1em;
+}
+
+.woocommerce.widget_shopping_cart .cart_list li a.remove {
+	left: -1em;	
+}

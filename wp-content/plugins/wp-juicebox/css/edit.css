@@ -1,0 +1,67 @@
+.jb-custom-wrap {
+	padding-left: 5px;
+	width: 690px;
+}
+
+.jb-custom-wrap fieldset {
+	border: 1px solid #cccccc;
+	margin: 6px 0px;
+	padding: 10px;
+}
+
+.jb-column1, .jb-column2, .jb-column3 {
+	display: inline;
+	float: left;
+	padding: 5px;
+}
+
+.jb-column1 {
+	white-space: nowrap;
+	width: 155px;
+}
+
+.jb-column2 {
+	width: 468px;
+}
+
+.jb-column3 {
+	width: 150px;
+}
+
+.jb-column2 input, .jb-column2 textarea {
+	width: 100%;
+}
+
+.jb-column2 textarea {
+	font-family: Courier, monospace;
+	line-height: 14px;
+}
+
+.jb-column3 input[type=text], .jb-column3 select {
+	width: 95%;
+}
+
+.jb-column-clear {
+	clear: left;
+	height: 1px;
+}
+
+.jb-table-buttons form {
+	display: inline;
+}
+
+#jb-manage-galleries-page img {
+	vertical-align: text-bottom;
+}
+
+#jb-gallery-options input[disabled] {
+	color: #808080;
+}
+
+#jb-toggle-media {
+	display: block;
+}
+
+#jb-toggle-flickr, #jb-toggle-nextgen, #jb-toggle-picasa  {
+	display: none;
+}

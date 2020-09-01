@@ -1,0 +1,747 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Ultimate Post Grid\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-11 14:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.0; wp-5.4.2"
+
+#: includes/class-wp-ultimate-post-grid.php:135
+msgid "More information on updating the plugin"
+msgstr ""
+
+#: includes/admin/class-wpupg-manage-modal.php:40
+msgid "Manage"
+msgstr ""
+
+#: includes/admin/class-wpupg-marketing.php:90
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-wpupg-marketing.php:92
+#, php-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-wpupg-marketing.php:94
+#, php-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/admin/class-wpupg-notices.php:97
+msgid "Welcome to WP Ultimate Post Grid"
+msgstr ""
+
+#: includes/admin/class-wpupg-notices.php:98
+msgid "Not sure how to get started?"
+msgstr ""
+
+#: includes/admin/class-wpupg-notices.php:98
+msgid "Check out our documentation!"
+msgstr ""
+
+#: includes/admin/class-wpupg-notices.php:137
+msgid "WARNING: WP Ultimate Post Grid 3.0.0+"
+msgstr ""
+
+#: includes/public/class-wpupg-settings.php:36
+msgid "Settings"
+msgstr ""
+
+#: includes/public/class-wpupg-post-type.php:38
+msgctxt "post type general name"
+msgid "Grids"
+msgstr ""
+
+#: includes/public/class-wpupg-post-type.php:39
+msgctxt "post type singular name"
+msgid "Grid"
+msgstr ""
+
+#: includes/public/class-wpupg-filter-isotope.php:56
+msgid "All"
+msgstr ""
+
+#: includes/public/class-wpupg-template-shortcodes.php:120
+msgid "WP Ultimate Post Grid Premium only"
+msgstr ""
+
+#: templates/settings/group-custom-code.php:5
+msgid "Custom Code"
+msgstr ""
+
+#: templates/settings/group-custom-code.php:10
+msgid "Public CSS"
+msgstr ""
+
+#: templates/settings/group-custom-code.php:11
+msgid "This custom styling will be output on your website."
+msgstr ""
+
+#: templates/settings/group-permissions.php:5
+msgid "Permissions"
+msgstr ""
+
+#: templates/settings/group-permissions.php:6
+msgid ""
+"Accepts one value only. Set the minimum capability required to access "
+"specific features. For example, set to edit_others_posts to provide access "
+"to editors and administrators."
+msgstr ""
+
+#: templates/settings/group-permissions.php:12
+msgid "Access to Manage Page"
+msgstr ""
+
+#: templates/settings/settings.php:22
+msgid "Documentation"
+msgstr ""
+
+#: templates/settings/settings.php:23
+msgid "All documentation can be found in our Knowledge Base."
+msgstr ""
+
+#: templates/settings/settings.php:30
+msgid "Advanced"
+msgstr ""
+
+#: templates/settings/group-debugging.php:5
+msgid "Debugging"
+msgstr ""
+
+#: templates/settings/group-debugging.php:10
+msgid "Enable Debug Messages"
+msgstr ""
+
+#: templates/settings/group-debugging.php:11
+msgid ""
+"When enabled the plugin will output debug messages in the JavaScript console."
+msgstr ""
+
+#: templates/settings/group-animation.php:5
+msgid "Animation"
+msgstr ""
+
+#: templates/settings/group-animation.php:9
+msgid "Grid Animation"
+msgstr ""
+
+#: templates/settings/group-animation.php:13
+msgid "Container Animation Speed"
+msgstr ""
+
+#: templates/settings/group-animation.php:14
+msgid "Duration of the container height adjustment."
+msgstr ""
+
+#: templates/settings/group-animation.php:16 
+#: templates/settings/group-animation.php:24 
+#: templates/settings/group-animation.php:46
+msgid "milliseconds"
+msgstr ""
+
+#: templates/settings/group-animation.php:21
+msgid "Item Animation Speed"
+msgstr ""
+
+#: templates/settings/group-animation.php:22
+msgid "Duration of the item animation."
+msgstr ""
+
+#: templates/settings/group-animation.php:29
+msgid "Animation on Show"
+msgstr ""
+
+#: templates/settings/group-animation.php:30 
+#: templates/settings/group-animation.php:37
+msgid "Example"
+msgstr ""
+
+#: templates/settings/group-animation.php:36
+msgid "Animation on Hide"
+msgstr ""
+
+#: templates/settings/group-animation.php:43
+msgid "Item Animation Delay"
+msgstr ""
+
+#: templates/settings/group-animation.php:44
+msgid ""
+"Staggers item transitions, so items transition incrementally after one "
+"another."
+msgstr ""
+
+#: templates/settings/group-layout.php:5
+msgid "Layout"
+msgstr ""
+
+#: templates/settings/group-layout.php:9
+msgid "Breakpoints"
+msgstr ""
+
+#: templates/settings/group-layout.php:13
+msgid "Tablet Breakpoint"
+msgstr ""
+
+#: templates/settings/group-layout.php:14
+msgid ""
+"If the screen size is smaller than this, the tablet (or mobile) layout will "
+"be shown."
+msgstr ""
+
+#: templates/settings/group-layout.php:20
+msgid "Mobile Breakpoint"
+msgstr ""
+
+#: templates/settings/group-layout.php:21
+msgid ""
+"If the screen size is smaller than this, the mobile layout will be shown."
+msgstr ""
+
+#: templates/settings/group-general.php:5 templates/admin/translations.php:92
+msgid "General"
+msgstr ""
+
+#: templates/settings/group-general.php:9
+msgid "Customize Link & Image"
+msgstr ""
+
+#: templates/settings/group-general.php:10
+msgid ""
+"You can set a custom link or image for every item in the grid by editing the "
+"individual post."
+msgstr ""
+
+#: templates/settings/group-general.php:14
+msgid "Post Types"
+msgstr ""
+
+#: templates/settings/group-general.php:15
+msgid "Which post types do you want to enable this option for?"
+msgstr ""
+
+#: templates/settings/group-general.php:22 templates/admin/translations.php:38
+msgid "Taxonomies"
+msgstr ""
+
+#: templates/settings/group-general.php:23
+msgid "Which taxonomies do you want to enable this option for?"
+msgstr ""
+
+#: templates/admin/meta-box.php:15
+msgid "Custom Link"
+msgstr ""
+
+#: templates/admin/meta-box.php:19
+msgid "Override the default link for this post."
+msgstr ""
+
+#: templates/admin/meta-box.php:22
+msgid "Custom Link Behaviour"
+msgstr ""
+
+#: templates/admin/meta-box.php:27
+msgid "Use grid default"
+msgstr ""
+
+#: templates/admin/meta-box.php:28
+msgid "Open in same tab"
+msgstr ""
+
+#: templates/admin/meta-box.php:29
+msgid "Open in new tab"
+msgstr ""
+
+#: templates/admin/meta-box.php:30
+msgid "Don't use links"
+msgstr ""
+
+#: templates/admin/meta-box.php:40
+msgid "Override the link behaviour for this item."
+msgstr ""
+
+#: templates/admin/meta-box.php:43
+msgid "Custom Image URL"
+msgstr ""
+
+#: templates/admin/meta-box.php:48
+msgid "Choose from Library"
+msgstr ""
+
+#: templates/admin/translations.php:13
+msgid "Checkboxes Styling"
+msgstr ""
+
+#: templates/admin/translations.php:14
+msgid "Slider"
+msgstr ""
+
+#: templates/admin/translations.php:15
+msgid "Premium Only"
+msgstr ""
+
+#: templates/admin/translations.php:16
+msgid "Font Size"
+msgstr ""
+
+#: templates/admin/translations.php:17
+msgid "Border"
+msgstr ""
+
+#: templates/admin/translations.php:18
+msgid "Background"
+msgstr ""
+
+#: templates/admin/translations.php:19
+msgid "Text"
+msgstr ""
+
+#: templates/admin/translations.php:20
+msgid "Input Colors"
+msgstr ""
+
+#: templates/admin/translations.php:21
+msgid "vertical"
+msgstr ""
+
+#: templates/admin/translations.php:22
+msgid "horizontal"
+msgstr ""
+
+#: templates/admin/translations.php:23
+msgid "Margin"
+msgstr ""
+
+#: templates/admin/translations.php:24
+msgid "Left"
+msgstr ""
+
+#: templates/admin/translations.php:25
+msgid "Center"
+msgstr ""
+
+#: templates/admin/translations.php:26
+msgid "Right"
+msgstr ""
+
+#: templates/admin/translations.php:27
+msgid "Alignment"
+msgstr ""
+
+#: templates/admin/translations.php:28
+msgid "Fixed"
+msgstr ""
+
+#: templates/admin/translations.php:29
+msgid "Percentage"
+msgstr ""
+
+#: templates/admin/translations.php:30
+msgid "Input Size"
+msgstr ""
+
+#: templates/admin/translations.php:31
+msgid "Width"
+msgstr ""
+
+#: templates/admin/translations.php:32
+msgid "Minimum Width"
+msgstr ""
+
+#: templates/admin/translations.php:33
+msgid "Text Search Filter Options"
+msgstr ""
+
+#: templates/admin/translations.php:34
+msgid "Placeholder text"
+msgstr ""
+
+#: templates/admin/translations.php:35
+msgid "Text shown as placeholder for the search input."
+msgstr ""
+
+#: templates/admin/translations.php:36
+msgid "Input Styling"
+msgstr ""
+
+#: templates/admin/translations.php:37
+msgid "Dropdown Filter Options"
+msgstr ""
+
+#: templates/admin/translations.php:39
+msgid "Custom Field"
+msgstr ""
+
+#: templates/admin/translations.php:40
+msgid "Source"
+msgstr ""
+
+#: templates/admin/translations.php:41
+msgid "Selecting parent terms matches children"
+msgstr ""
+
+#: templates/admin/translations.php:42
+msgid ""
+"Selecting a parent term will also match posts with one of its child terms."
+msgstr ""
+
+#: templates/admin/translations.php:43
+msgid "Inverse Selection"
+msgstr ""
+
+#: templates/admin/translations.php:44
+msgid "Items that match the selection will be hidden."
+msgstr ""
+
+#: templates/admin/translations.php:45
+msgid "Show Empty"
+msgstr ""
+
+#: templates/admin/translations.php:46
+msgid "Show Count"
+msgstr ""
+
+#: templates/admin/translations.php:47
+msgid "Show number of posts for each term."
+msgstr ""
+
+#: templates/admin/translations.php:48
+msgid "Multi-select"
+msgstr ""
+
+#: templates/admin/translations.php:49
+msgid "Allow users to select multiple terms."
+msgstr ""
+
+#: templates/admin/translations.php:50
+msgid "Only posts that match all selected terms"
+msgstr ""
+
+#: templates/admin/translations.php:51
+msgid "All posts that match any of the selected terms"
+msgstr ""
+
+#: templates/admin/translations.php:52
+msgid "Multi-select Behaviour"
+msgstr ""
+
+#: templates/admin/translations.php:53
+msgid "Custom Field Key"
+msgstr ""
+
+#: templates/admin/translations.php:54
+msgid "Key of the custom field to use."
+msgstr ""
+
+#: templates/admin/translations.php:55
+msgid "Label"
+msgstr ""
+
+#: templates/admin/translations.php:56
+msgid "Numeric Field"
+msgstr ""
+
+#: templates/admin/translations.php:57
+msgid "Enable if the custom field contains numbers."
+msgstr ""
+
+#: templates/admin/translations.php:58
+msgid "Filter Labels & Order"
+msgstr ""
+
+#: templates/admin/translations.php:59
+msgid "Filter Terms"
+msgstr ""
+
+#: templates/admin/translations.php:60
+msgid "Alphabetical"
+msgstr ""
+
+#: templates/admin/translations.php:61
+msgid "Reverse Alphabetical"
+msgstr ""
+
+#: templates/admin/translations.php:62
+msgid "Ascending Count"
+msgstr ""
+
+#: templates/admin/translations.php:63
+msgid "Descending Count"
+msgstr ""
+
+#: templates/admin/translations.php:64
+msgid "Term Order"
+msgstr ""
+
+#: templates/admin/translations.php:65
+msgid "Order of the Dropdown terms."
+msgstr ""
+
+#: templates/admin/translations.php:66
+msgid "Limit Terms"
+msgstr ""
+
+#: templates/admin/translations.php:67
+msgid "Only show/hide selected terms in the filter."
+msgstr ""
+
+#: templates/admin/translations.php:68
+msgid "Exclude Selected Terms"
+msgstr ""
+
+#: templates/admin/translations.php:69
+msgid "Custom Field Options"
+msgstr ""
+
+#: templates/admin/translations.php:70
+msgid "Dropdown Styling"
+msgstr ""
+
+#: templates/admin/translations.php:71
+msgid "Padding"
+msgstr ""
+
+#: templates/admin/translations.php:72
+msgid "Default"
+msgstr ""
+
+#: templates/admin/translations.php:73
+msgid "Highlight"
+msgstr ""
+
+#: templates/admin/translations.php:74
+msgid "Background Color"
+msgstr ""
+
+#: templates/admin/translations.php:75
+msgid "Text Color"
+msgstr ""
+
+#: templates/admin/translations.php:76
+msgid "Border Color"
+msgstr ""
+
+#: templates/admin/translations.php:77
+msgid "Spaced evenly"
+msgstr ""
+
+#: templates/admin/translations.php:78
+msgid "Automatic"
+msgstr ""
+
+#: templates/admin/translations.php:79
+msgid "Dropdown Size"
+msgstr ""
+
+#: templates/admin/translations.php:80
+msgid "Show search"
+msgstr ""
+
+#: templates/admin/translations.php:81
+msgid "Slider Filter Options"
+msgstr ""
+
+#: templates/admin/translations.php:82
+msgid ""
+"Key of the custom field to use for the slider. Should have numerical values."
+msgstr ""
+
+#: templates/admin/translations.php:83
+msgid "Checkboxes Filter Options"
+msgstr ""
+
+#: templates/admin/translations.php:84
+msgid "Order of the Checkboxes terms."
+msgstr ""
+
+#: templates/admin/translations.php:85
+msgid "On its own line"
+msgstr ""
+
+#: templates/admin/translations.php:86
+msgid "Inline"
+msgstr ""
+
+#: templates/admin/translations.php:87
+msgid "Display"
+msgstr ""
+
+#: templates/admin/translations.php:88
+msgid "Active"
+msgstr ""
+
+#: templates/admin/translations.php:89
+msgid "Hover"
+msgstr ""
+
+#: templates/admin/translations.php:90
+msgid "Initial Posts"
+msgstr ""
+
+#: templates/admin/translations.php:91
+msgid "Posts Loaded on Scroll"
+msgstr ""
+
+#: templates/admin/translations.php:93
+msgid "Posts Loaded on Click"
+msgstr ""
+
+#: templates/admin/translations.php:94
+msgid "Button Text"
+msgstr ""
+
+#: templates/admin/translations.php:95
+msgid "Load Posts on Filter"
+msgstr ""
+
+#: templates/admin/translations.php:96
+msgid "Also automatically load all posts matching a grid filter."
+msgstr ""
+
+#: templates/admin/translations.php:97
+msgid "Button Styling"
+msgstr ""
+
+#: templates/admin/translations.php:98
+msgid "Border Width"
+msgstr ""
+
+#: templates/admin/translations.php:99
+msgid "Border Radius"
+msgstr ""
+
+#: templates/admin/translations.php:100
+msgid "Limit Items"
+msgstr ""
+
+#: templates/admin/translations.php:101
+msgid "Make sure to select some post types first."
+msgstr ""
+
+#: templates/admin/translations.php:102
+msgid "Add Limit Items Rule"
+msgstr ""
+
+#: templates/admin/translations.php:103
+msgid "Make sure to select some taxonomies first."
+msgstr ""
+
+#: templates/admin/translations.php:104
+msgid "Terms"
+msgstr ""
+
+#: templates/admin/translations.php:105
+msgid "Show only the selected terms"
+msgstr ""
+
+#: templates/admin/translations.php:106
+msgid "Exclude all the selected terms"
+msgstr ""
+
+#: templates/admin/translations.php:107
+msgid "Limit Type"
+msgstr ""
+
+#: templates/admin/translations.php:108
+msgid "Author"
+msgstr ""
+
+#: templates/admin/translations.php:109
+msgid "Date"
+msgstr ""
+
+#: templates/admin/translations.php:110
+msgid "ID"
+msgstr ""
+
+#: templates/admin/translations.php:111
+msgid "Before"
+msgstr ""
+
+#: templates/admin/translations.php:112
+msgid "Is"
+msgstr ""
+
+#: templates/admin/translations.php:113
+msgid "After"
+msgstr ""
+
+#: templates/admin/translations.php:114
+msgid "Seperate IDs with a semicolon"
+msgstr ""
+
+#: templates/admin/translations.php:115
+msgid "Only these items"
+msgstr ""
+
+#: templates/admin/translations.php:116
+msgid "Exclude these items"
+msgstr ""
+
+#: templates/admin/translations.php:117
+msgid "Remove"
+msgstr ""
+
+#: templates/admin/translations.php:118
+msgid "Show terms that don't have any posts."
+msgstr ""
+
+#: templates/admin/translations.php:119
+msgid "You've selected features that are only available in"
+msgstr ""
+
+#: includes/admin/menu/class-wpupg-admin-menu-faq.php:47
+msgid "FAQ & Support"
+msgstr ""
+
+#: includes/admin/menu/class-wpupg-admin-menu-addons.php:37
+msgid "Upgrade WPUPG"
+msgstr ""
+
+#: templates/admin/menu/addons.php:15
+msgid "Upgrade WP Ultimate Post Grid"
+msgstr ""
+
+#: includes/public/shortcodes/item/class-wpupg-sc-date.php:51
+msgid ""
+"Use the PHP date format. Leave empty to use default WordPress date format "
+"from the Settings > General page."
+msgstr ""
+
+#. Name of the plugin
+msgid "WP Ultimate Post Grid"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Easily create filterable responsive grids for your posts, pages or custom "
+"post types."
+msgstr ""
+
+#. URI of the plugin
+msgid "https://bootstrapped.ventures/wp-ultimate-post-grid/"
+msgstr ""
+
+#. Author of the plugin
+msgid "Bootstrapped Ventures"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://bootstrapped.ventures/"
+msgstr ""
