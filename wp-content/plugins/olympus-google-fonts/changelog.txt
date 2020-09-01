@@ -1,10 +1,52 @@
+= 2.1.9 =
+
+* Fix minor javascript error
+
+= 2.1.8 =
+
+* Fix text-transform control not showing correctly.
+* Improve color control styling.
+
+= 2.1.7 =
+
+* Fix italic fonts not listed correctly in fonts.json.
+
+= 2.1.6 =
+
+* Update fonts list.
+
+= 2.1.5 =
+
+* Rewrite CSS vars to use Automattic's theme format.
+
+= 2.1.4 =
+
+* Expand sidebar CSS selectors.
+
+= 2.1.3 =
+
+* Fix broken link in readme.
+
+= 2.1.2 =
+
+* Overwrite the Classic Editor's typography using the 'Basic Settings'.
+
+= 2.1.1 =
+
+* Fix issue where customizer wasn't loading correct font weights.
+
+= 2.1.0 =
+
+* Further optimize fonts.json.
+* Update fonts list.
+
 = 2.0.7 =
 
 * Fix array_key_exists() error, props @rafafallo
 
 = 2.0.6 =
 
-* Output the 'Basic Setting' choices as CSS variables. props @helgatheviking
+* Output the 'Basic Setting' choices as CSS variables. props @helgatheviking.
 * Fix issue where important wasn't being applied to some system fonts.
 * Add welcome page.
 

@@ -1,13 +1,13 @@
 <?php
 /**
- * Google Fonts Typography
+ * Fonts Plugin | Google Fonts Typography
  *
- * Plugin Name: Google Fonts Typography
+ * Plugin Name: Fonts Plugin | Google Fonts Typography
  * Plugin URI:  https://wordpress.org/plugins/olympus-google-fonts/
  * Description: The easiest to use Google Fonts typography plugin. No coding required. 900+ font choices.
- * Version:     2.0.7
+ * Version:     2.1.9
  * Author:      Fonts Plugin
- * Author URI:  https://fontsplugin.com/?utm_source=wporg&utm_campaign=heading
+ * Author URI:  https://fontsplugin.com/?utm_source=wporg&utm_medium=readme&utm_campaign=description
  * Text Domain: olympus-google-fonts
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
@@ -18,7 +18,7 @@
  * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
-define( 'OGF_VERSION', '2.0.7' );
+define( 'OGF_VERSION', '2.1.9' );
 define( 'OGF_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'OGF_DIR_URL', plugin_dir_url( __FILE__ ) );
 

@@ -116,13 +116,13 @@ function ogf_get_elements() {
 			'label'       => esc_html__( 'Headings Typography', 'olympus-google-fonts' ),
 			'description' => esc_html__( 'Select and configure the font for your sidebar headings.', 'olympus-google-fonts' ),
 			'section'     => 'ogf_advanced__sidebar',
-			'selectors'   => '.widget-title, .widget-area h1, .widget-area h2, .widget-area h3, .widget-area h4, .widgets-area h5, .widget-area h6',
+			'selectors'   => '.widget-title, .widget-area h1, .widget-area h2, .widget-area h3, .widget-area h4, .widgets-area h5, .widget-area h6, #secondary h1, #secondary h2, #secondary h3, #secondary h4, .widgets-area h5, #secondary h6',
 		),
 		'ogf_sidebar_content' => array(
 			'label'       => esc_html__( 'Content Typography', 'olympus-google-fonts' ),
 			'description' => esc_html__( 'Select and configure the font for your sidebar content.', 'olympus-google-fonts' ),
 			'section'     => 'ogf_advanced__sidebar',
-			'selectors'   => '.widget-area, .widget, .sidebar, #sidebar',
+			'selectors'   => '.widget-area, .widget, .sidebar, #sidebar, #secondary',
 		),
 		'ogf_footer_headings' => array(
 			'label'       => esc_html__( 'Headings Typography', 'olympus-google-fonts' ),
@@ -160,7 +160,6 @@ function ogf_fonts_array() {
 	foreach ( $fonts_array['items'] as $key => $font ) {
 
 		$variants_remove = array(
-			'italic',
 			'100italic',
 			'200italic',
 			'300italic',
@@ -173,13 +172,10 @@ function ogf_fonts_array() {
 		);
 
 		// remove italic variants.
-		$font['variants'] = array_diff( $font['variants'], $variants_remove );
-
-		// replace regular with numberic identifier.
-		$font['variants'] = str_replace( 'regular', '400', $font['variants'] );
+		$font['v'] = array_diff( $font['v'], $variants_remove );
 
 		// flip the key/values.
-		$font['variants'] = array_flip( $font['variants'] );
+		$font['v'] = array_flip( $font['v'] );
 
 		$fonts_array['items'][ $key ] = $font;
 
@@ -187,7 +183,7 @@ function ogf_fonts_array() {
 
 	// Change the array key to the font's ID.
 	foreach ( $fonts_array['items'] as $font ) {
-		$id           = trim( strtolower( str_replace( ' ', '-', $font['family'] ) ) );
+		$id           = trim( strtolower( str_replace( ' ', '-', $font['f'] ) ) );
 		$fonts[ $id ] = $font;
 	}
 
