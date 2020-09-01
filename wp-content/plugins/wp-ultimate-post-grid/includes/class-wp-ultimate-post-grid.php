@@ -31,7 +31,7 @@ class WP_Ultimate_Post_Grid {
 	 * @since    3.0.0
 	 */
 	private function define_constants() {
-		define( 'WPUPG_VERSION', '3.3.0' );
+		define( 'WPUPG_VERSION', '3.4.0' );
 		define( 'WPUPG_PREMIUM_VERSION_REQUIRED', '3.0.0' );
 		define( 'WPUPG_POST_TYPE', 'wpupg_grid' );
 		define( 'WPUPG_DIR', plugin_dir_path( dirname( __FILE__ ) ) );
@@ -77,6 +77,7 @@ class WP_Ultimate_Post_Grid {
 		require_once( WPUPG_DIR . 'includes/public/api/class-wpupg-api-manage-grids.php' );
 		require_once( WPUPG_DIR . 'includes/public/api/class-wpupg-api-notices.php' );
 		require_once( WPUPG_DIR . 'includes/public/api/class-wpupg-api-preview-grid.php' );
+		require_once( WPUPG_DIR . 'includes/public/api/class-wpupg-api-templates.php' );
 
 		// // Public.
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-addons.php' );
@@ -101,6 +102,7 @@ class WP_Ultimate_Post_Grid {
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-pagination-pages.php' );
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-post-type.php' );
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-shortcode.php' );
+		require_once( WPUPG_DIR . 'includes/public/class-wpupg-template-editor.php' );
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-template-helper.php' );
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-template-manager.php' );
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-template-shortcode.php' );

@@ -474,6 +474,11 @@ class WPUPG_Grid {
 			return 0 < count( $this->filters() );
 		}
 
+		// No filters for a term grid.
+		if ( 'terms' === $this->type() ) {
+			return false;
+		}
+
 		return $this->meta( 'filters_enabled', false );
 	}
 	public function filters_style( $field = false ) {

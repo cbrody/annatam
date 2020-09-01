@@ -27,6 +27,10 @@ class WPUPG_SC_Terms extends WPUPG_Template_Shortcode {
 				'type' => 'text',
 				'help' => 'Key of the taxonomy you want to display. Use "category" for regular categories and "post_tag" for regular tags.',
 			),
+			'links' => array(
+				'type' => 'toggle',
+				'default' => '0',
+			),
 			'display' => array(
 				'default' => 'inline',
 				'type' => 'dropdown',
@@ -94,7 +98,18 @@ class WPUPG_SC_Terms extends WPUPG_Template_Shortcode {
 			if ( 0 !== $index ) {
 				$term_output .= $atts['term_separator'];
 			}
-			$term_output .= is_object( $term ) ? $term->name : $term;
+
+			if ( is_object( $term ) ) {
+				$link = (bool) $atts['links'] ? get_term_link( $term ) : false;
+
+				if ( $link && ! is_wp_error( $link ) ) {
+					$term_output .= '<a href="' . esc_attr( $link ) . '">' . $term->name . '</a>';
+				} else {
+					$term_output .= $term->name;
+				}
+			} else {
+				$term_output .= $term;
+			}
 		}
 
 		$label_container = WPUPG_Template_Helper::get_label_container( $atts, 'terms' );

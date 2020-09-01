@@ -3,6 +3,10 @@
     cursor: pointer;
     position: relative;
 }
+
+.wpupg-pagination-loader {
+    position: relative;
+}
   
 @keyframes wpupg-spinner {
     to {transform: rotate(360deg);}

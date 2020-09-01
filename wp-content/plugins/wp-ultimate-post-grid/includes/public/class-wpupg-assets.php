@@ -78,6 +78,13 @@ class WPUPG_Assets {
 		wp_enqueue_style( 'wpupg-admin', WPUPG_URL . 'dist/admin.css', array(), WPUPG_VERSION, 'all' );
 		wp_enqueue_script( 'wpupg-admin', WPUPG_URL . 'dist/admin.js', $dependencies, WPUPG_VERSION, true );
 
+		// Template Editor.
+		$screen = get_current_screen();
+		if ( 'grids_page_wpupg_template_editor' === $screen->id ) {
+			wp_enqueue_style( 'wpupg-admin-template', WPUPG_URL . 'dist/admin-template.css', array(), WPUPG_VERSION, 'all' );
+			wp_enqueue_script( 'wpupg-admin-template', WPUPG_URL . 'dist/admin-template.js', array( 'wpupg-admin' ), WPUPG_VERSION, true );
+		}
+
 		// Translations.
 		include( WPUPG_DIR . 'templates/admin/translations.php' );
 
@@ -91,6 +98,7 @@ class WPUPG_Assets {
 				'manage' => get_rest_url( null, 'wp-ultimate-post-grid/v1/manage' ),
 				'notices' => get_rest_url( null, 'wp-ultimate-post-grid/v1/notice' ),
 				'preview' => get_rest_url( null, 'wp-ultimate-post-grid/v1/preview' ),
+				'template' => get_rest_url( null, 'wp-ultimate-post-grid/v1/template' ),
 			),
 			'addons' => array(
 				'premium' => WPUPG_Addons::is_active( 'premium' ),

@@ -308,6 +308,9 @@ class WPUPG_Grid_Output {
 			$data = apply_filters( 'wpupg_output_item_data', $data, $grid, $item, $args );
 			$html = apply_filters( 'wpupg_output_item_html', WPUPG_Template_Manager::get_template( $item, $template ), $template, $item, $classes );
 
+			// Prevent duplicate classes.
+			$classes = array_unique( $classes );
+
 			// Construct data string.
 			$data_string = '';
 			foreach ( $data as $data_key => $data_value ) {

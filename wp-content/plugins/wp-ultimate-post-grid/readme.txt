@@ -3,7 +3,7 @@ Contributors: BrechtVds
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QG7KZMGFU325Y
 Tags: grid, isotope, filter, custom post type
 Requires at least: 3.5
-Tested up to: 5.4
+Tested up to: 5.5
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -30,6 +30,7 @@ An overview of the WP Ultimate Post Grid features:
 *   **Deeplinking** directly to a filtered grid
 *   Grids and filters can be added anywhere with **their own shortcode**
 *   Multiple **templates** for your grids
+*   Extensive **Template Editor** to create any grid you want
 *   Possibility to use **pagination**
 *   Compatible with both **Classic Editor and Gutenberg** Block Editor
 *   Fully integrated with our WP Recipe Maker plugin for a **recipe  grid**
@@ -42,7 +43,6 @@ We also have a [WP Ultimate Post Grid Premium version](https://bootstrapped.vent
 *   Use a **checkbox filter** for any taxonomy
 *   Allow for **multiselect** in the filters
 *   Show the **post count** for the filter terms
-*   Extensive **Template Editor** to create any grid you want
 *   Create a grid of your **categories or tags**
 *   A **Load More button** for pagination
 *   **Load on filter** pagination
@@ -78,6 +78,12 @@ Check out the [WP Ultimate Post Grid demo site](https://bootstrapped.ventures/wp
 5. Different free templates that are fully responsive and work on desktop, tablet and mobile
 
 == Changelog ==
+= 3.4.0 =
+* Feature: Template Editor as part of the free plugin
+* Feature: Allow links for terms block in Template Editor
+* Improvement: Use i18n date function to make sure the date language is correct
+* Fix: Filter problem with multiple multi-select "OR" filters
+
 = 3.3.0 =
 * Feature: Filter by custom fields
 * Improvement: Better browser compatibility
@@ -273,6 +279,9 @@ Check out the [WP Ultimate Post Grid demo site](https://bootstrapped.ventures/wp
 * Very first version of this plugin
 
 == Upgrade notice ==
+= 3.4.0 =
+New Template Editor for the free plugin
+
 = 3.3.0 =
 Better browser and theme compatibility and a brand new filter feature
 

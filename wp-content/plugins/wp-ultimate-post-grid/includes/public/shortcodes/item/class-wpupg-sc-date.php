@@ -88,7 +88,7 @@ class WPUPG_SC_Date extends WPUPG_Template_Shortcode {
 			$format = get_option( 'date_format' );
 		}
 
-		$date = date( $format, strtotime( $item->date() ) );
+		$date = date_i18n( $format, strtotime( $item->date() ) );
 
 		$label_container = WPUPG_Template_Helper::get_label_container( $atts, 'date' );
 		$tag = 'block' === $atts['display'] ? 'div' : 'span';

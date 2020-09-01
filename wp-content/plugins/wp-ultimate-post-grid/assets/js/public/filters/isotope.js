@@ -162,6 +162,11 @@ window.WPUPG_Filter_isotope = {
                             }
                         }
                     }
+
+                    // Clean up if empty.
+                    if ( 0 === this.selected[ taxonomy ].length ) {
+                        delete this.selected[ taxonomy ];
+                    }
                 }
     
                 // Trigger grid filter.

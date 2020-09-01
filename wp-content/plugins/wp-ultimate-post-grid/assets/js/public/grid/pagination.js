@@ -45,6 +45,11 @@ export default ( elemId, args ) => {
         loadingItems: false,
         loadNextInQueue() {
             if ( ! this.loadingItems && 0 < this.loadItemsQueue.length ) {
+                // Start optional pagination loader.
+                if ( this.pagination && this.pagination.hasOwnProperty( 'startLoader' ) ) {
+                    this.pagination.startLoader();
+                }
+
                 this.loadingItems = true;
                 const nextLoad = this.loadItemsQueue.shift();
         
@@ -57,6 +62,11 @@ export default ( elemId, args ) => {
                         this.loadingItems = false;
                         this.loadNextInQueue();
                     } );
+            } else if ( ! this.loadItemsQueue.length ) {
+                // Stop optional pagination loader.
+                if ( this.pagination && this.pagination.hasOwnProperty( 'stopLoader' ) ) {
+                    this.pagination.stopLoader();
+                }
             }
         },
         loadItemsQueued( args, callback ) {
