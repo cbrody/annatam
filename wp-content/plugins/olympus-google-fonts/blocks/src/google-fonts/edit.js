@@ -6,7 +6,7 @@ import systemFontsJson from './systemFonts.json';
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { SelectControl, RangeControl, PanelBody } = wp.components;
-const { RichText, InspectorControls, BlockControls, AlignmentToolbar, PanelColorSettings } = wp.editor;
+const { RichText, InspectorControls, BlockControls, AlignmentToolbar, PanelColorSettings } = wp.blockEditor;
 
 class GoogleFontsBlock extends Component {
 
@@ -22,6 +22,21 @@ class GoogleFontsBlock extends Component {
 	 * @returns {Object}  value/label pair.
 	 */
 	getFontsForSelect() {
+
+		const customFonts = Object.values( ogf_custom_fonts ).map( ( font ) => {
+
+			return {
+				value: font.id,
+				label: font.label,
+			};
+		} );
+
+		customFonts.unshift({
+			value: '1',
+			label: __( '- Custom Fonts -', 'olympus-google-fonts' ),
+			disabled: true,
+		});
+
 		const systemFonts = systemFontsJson.items.map( ( font ) => {
 			const label = font.label;
 			const value = font.id;
@@ -31,6 +46,14 @@ class GoogleFontsBlock extends Component {
 				label: label,
 			};
 		} );
+
+		systemFonts.unshift({
+			value: '1',
+			label: __( '- System Fonts -', 'olympus-google-fonts' ),
+			disabled: true,
+		});
+
+		const combinedFonts = customFonts.concat( systemFonts );
 
 		const googleFonts = fontsJson.items.map( ( font ) => {
 			const label = font.f;
@@ -42,7 +65,13 @@ class GoogleFontsBlock extends Component {
 			};
 		} );
 
-		return systemFonts.concat( googleFonts );
+		googleFonts.unshift({
+			value: '1',
+			label: __( '- Google Fonts -', 'olympus-google-fonts' ),
+			disabled: true,
+		});
+
+		return combinedFonts.concat( googleFonts );
 	}
 
 	searchFonts( nameKey, myArray ){
@@ -53,15 +82,23 @@ class GoogleFontsBlock extends Component {
     }
 	}
 
-	isSystemFont( fontID ) {
-		const searchResults = this.searchFonts( fontID, systemFontsJson.items );
+	isCustomFont( fontID ) {
+		const searchResults = this.searchFonts( fontID, Object.values( ogf_custom_fonts ) );
 
 		if ( typeof searchResults === 'object' ) {
 			return true;
 		}
 
 		return false;
+	}
 
+	isSystemFont( fontID ) {
+		const searchResults = this.searchFonts( fontID, systemFontsJson.items );
+		if ( typeof searchResults === 'object' ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -101,7 +138,9 @@ class GoogleFontsBlock extends Component {
 			900: __( 'Ultra Bold', 'olympus-google-fonts' ),
 		};
 
-		fontObject.v.indexOf("0") === -1 ? fontObject.v.unshift("0") : console.log("This item already exists");
+		if( fontObject.v.indexOf("0") === -1 ) {
+			fontObject.v.unshift("0");
+		}
 
 		return fontObject.v.filter( this.isItalic ).map( ( variant ) => {
 			return {
@@ -138,7 +177,7 @@ class GoogleFontsBlock extends Component {
 	 * @param {Object} fontObject The font object.
 	 */
 	addGoogleFontToHead( fontFamily, fontObject ) {
-		if ( ! fontFamily || ! fontObject || this.isSystemFont() ) {
+		if ( ! fontFamily || ! fontObject ) {
 			return;
 		}
 
@@ -174,7 +213,7 @@ class GoogleFontsBlock extends Component {
 			},
 		];
 
-		if ( ! this.isSystemFont( fontID ) ) {
+		if ( ! this.isSystemFont( fontID ) && ! this.isCustomFont( fontID ) ) {
 			const fontObject = this.getFontObject( fontID.replace( /\+/g, ' ' ) );
 			variantOptions = this.getVariantsForSelect( fontObject );
 			this.addGoogleFontToHead( fontID, fontObject );
@@ -267,7 +306,6 @@ class GoogleFontsBlock extends Component {
 						color: color,
 					} }
 					placeholder={ __( 'Add some content...', 'olympus-google-fonts' ) }
-					formattingControls={ [ 'italic', 'link' ] }
 				/>
 			</Fragment>
 		);

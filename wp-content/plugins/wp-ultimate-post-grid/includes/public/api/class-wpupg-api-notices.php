@@ -38,6 +38,7 @@ class WPUPG_Api_Notices {
 			register_rest_route( 'wp-ultimate-post-grid/v1', '/notice', array(
 				'callback' => array( __CLASS__, 'api_dismiss_notice' ),
 				'methods' => 'DELETE',
+				'permission_callback' => '__return_true',
 			));
 		}
 	}

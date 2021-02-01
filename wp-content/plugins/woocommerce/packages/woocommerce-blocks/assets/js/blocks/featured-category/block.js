@@ -12,7 +12,7 @@ import {
 	PanelColorSettings,
 	withColors,
 	RichText,
-} from '@wordpress/editor';
+} from '@wordpress/block-editor';
 import {
 	Button,
 	FocalPointPicker,
@@ -31,9 +31,9 @@ import { Fragment } from '@wordpress/element';
 import { compose } from '@wordpress/compose';
 import PropTypes from 'prop-types';
 import { MIN_HEIGHT } from '@woocommerce/block-settings';
-import { IconFolderStar } from '@woocommerce/block-components/icons';
-import ProductCategoryControl from '@woocommerce/block-components/product-category-control';
-import ErrorPlaceholder from '@woocommerce/block-components/error-placeholder';
+import { Icon, folderStarred } from '@woocommerce/icons';
+import ProductCategoryControl from '@woocommerce/editor-components/product-category-control';
+import ErrorPlaceholder from '@woocommerce/editor-components/error-placeholder';
 
 /**
  * Internal dependencies
@@ -48,6 +48,18 @@ import { withCategory } from '../../hocs';
 
 /**
  * Component to handle edit mode of "Featured Category".
+ *
+ * @param {Object} props Incoming props for the component.
+ * @param {Object} props.attributes Incoming block attributes.
+ * @param {boolean} props.isSelected Whether block is selected or not.
+ * @param {function(any):any} props.setAttributes Function for setting new attributes.
+ * @param {string} props.error Error message
+ * @param {function(any):any} props.getCategory Function for getting category details.
+ * @param {boolean} props.isLoading Whether loading or not.
+ * @param {Object} props.category The product category object.
+ * @param {Object} props.overlayColor Overlay color object for content.
+ * @param {function(any):any} props.setOverlayColor Setter for overlay color.
+ * @param {function(any):any} props.debouncedSpeak Function for delayed speak.
  */
 const FeaturedCategory = ( {
 	attributes,
@@ -190,7 +202,7 @@ const FeaturedCategory = ( {
 
 		return (
 			<Placeholder
-				icon={ <IconFolderStar /> }
+				icon={ <Icon srcElement={ folderStarred } /> }
 				label={ __(
 					'Featured Category',
 					'woocommerce'
@@ -214,7 +226,7 @@ const FeaturedCategory = ( {
 						} }
 						isSingle
 					/>
-					<Button isDefault onClick={ onDone }>
+					<Button isPrimary onClick={ onDone }>
 						{ __( 'Done', 'woocommerce' ) }
 					</Button>
 				</div>
@@ -299,7 +311,7 @@ const FeaturedCategory = ( {
 		}
 
 		const onResizeStop = ( event, direction, elt ) => {
-			setAttributes( { height: parseInt( elt.style.height ) } );
+			setAttributes( { height: parseInt( elt.style.height, 10 ) } );
 		};
 
 		return (
@@ -337,7 +349,7 @@ const FeaturedCategory = ( {
 	const renderNoCategory = () => (
 		<Placeholder
 			className="wc-block-featured-category"
-			icon={ <IconFolderStar /> }
+			icon={ <Icon srcElement={ folderStarred } /> }
 			label={ __( 'Featured Category', 'woocommerce' ) }
 		>
 			{ isLoading ? (

@@ -9,7 +9,7 @@ import slideshows from './modules/slideshows'
 
 // Keep in local storage
 const vuexLocal = new VuexPersistence({
-	key: 'metaslider-vuex',
+	key: 'metaslider-vuex-' + window.metaslider_api.site_id,
 	reducer: state => ({
 		slideshows: {
 			all: state.slideshows.all
@@ -22,7 +22,6 @@ Vue.use(Vuex)
 
 const debug = process.env.NODE_ENV !== 'production'
 // const debug = false
-
 export default new Vuex.Store({
 	modules: {
 		slideshows

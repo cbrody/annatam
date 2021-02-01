@@ -326,6 +326,7 @@ class WPUPG_Grid_Output {
 			$link = false;
 			if ( $item->link( $grid ) ) {
 				$link = 'image' === $grid->link_type() ? $item->image_url( 'full' ) : $item->url();
+				$link = apply_filters( 'wpupg_output_item_link', $link, $grid, $item, $args );
 			}
 
 			if ( $link ) {

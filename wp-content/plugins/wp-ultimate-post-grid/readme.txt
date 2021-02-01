@@ -78,6 +78,19 @@ Check out the [WP Ultimate Post Grid demo site](https://bootstrapped.ventures/wp
 5. Different free templates that are fully responsive and work on desktop, tablet and mobile
 
 == Changelog ==
+= 3.5.1 =
+* Fix: Filters not working correctly in some environments
+* Fix: Plugin sidebar problem in Gutenberg after unpinning
+
+= 3.5.0 =
+* Feature: New free Ruled template
+* Feature: Block display style for item terms
+* Feature: Show author image in template editor
+* Feature: Link item image in template editor
+* Feature: Spacer block for template editor
+* Improvement: Major performance boost for filters
+* Fix: Prevent PHP notices in WordPress 5.5
+
 = 3.4.0 =
 * Feature: Template Editor as part of the free plugin
 * Feature: Allow links for terms block in Template Editor
@@ -279,6 +292,12 @@ Check out the [WP Ultimate Post Grid demo site](https://bootstrapped.ventures/wp
 * Very first version of this plugin
 
 == Upgrade notice ==
+= 3.5.1 =
+Update to prevent filter problems
+
+= 3.5.0 =
+Update for a major performance improvement and some new template features
+
 = 3.4.0 =
 New Template Editor for the free plugin
 

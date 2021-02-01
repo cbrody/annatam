@@ -203,7 +203,7 @@
                       if(e.currentTarget._gesture) {
                         e.currentTarget._gesture.addPointer(e.pointerId);
                       }
-                  }, false);
+                  }, { passive: true });
                   that.addEventListener("MSGestureTap", function (e){
                       e.preventDefault();
                       var $slide = $(this),
@@ -212,7 +212,7 @@
                           slider.direction = (slider.currentItem < target) ? "next" : "prev";
                           slider.flexAnimate(target, slider.vars.pauseOnAction, false, true, true);
                       }
-                  });
+                  }, { passive: true });
               });
           }
         }
@@ -450,8 +450,8 @@
                          (reverse) ? (slider.last - slider.currentSlide + slider.cloneOffset) * cwidth : (slider.currentSlide + slider.cloneOffset) * cwidth;
                 startX = (vertical) ? localY : localX;
                 startY = (vertical) ? localX : localY;
-                el.addEventListener('touchmove', onTouchMove, false);
-                el.addEventListener('touchend', onTouchEnd, false);
+                el.addEventListener('touchmove', onTouchMove, { passive: true });
+                el.addEventListener('touchend', onTouchEnd, { passive: true });
               }
             };
 
@@ -512,15 +512,15 @@
               offset = null;
             };
 
-            el.addEventListener('touchstart', onTouchStart, false);
+            el.addEventListener('touchstart', onTouchStart, { passive: true });
         }else{
             el.style.msTouchAction = "none";
             el._gesture = new MSGesture();
             el._gesture.target = el;
-            el.addEventListener("MSPointerDown", onMSPointerDown, false);
+            el.addEventListener("MSPointerDown", onMSPointerDown, { passive: true });
             el._slider = slider;
-            el.addEventListener("MSGestureChange", onMSGestureChange, false);
-            el.addEventListener("MSGestureEnd", onMSGestureEnd, false);
+            el.addEventListener("MSGestureChange", onMSGestureChange, { passive: true });
+            el.addEventListener("MSGestureEnd", onMSGestureEnd, { passive: true });
 
             function onMSPointerDown(e){
                 e.stopPropagation();

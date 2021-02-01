@@ -38,6 +38,7 @@ class WPUPG_API_Items {
 			register_rest_route( 'wp-ultimate-post-grid/v1', '/items', array(
 				'callback' => array( __CLASS__, 'api_items' ),
 				'methods' => 'POST',
+				'permission_callback' => '__return_true',
 			) );
 		}
 	}

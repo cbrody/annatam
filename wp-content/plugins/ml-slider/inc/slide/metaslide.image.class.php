@@ -501,7 +501,7 @@ class MetaImageSlide extends MetaSlide
         if (apply_filters('metaslider_filter_unsafe_html', true) && $slide['caption']) {
             try {
                 if (!class_exists('HTMLPurifier')) {
-                    require_once(METASLIDER_PATH . 'assets/htmlpurifier/library/HTMLPurifier.auto.php');
+                    require_once(METASLIDER_PATH . 'lib/htmlpurifier/library/HTMLPurifier.auto.php');
                 }
                 $purifier = new HTMLPurifier();
                 $slide['caption'] = $purifier->purify($slide['caption']);

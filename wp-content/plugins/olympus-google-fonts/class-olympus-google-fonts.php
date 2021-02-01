@@ -39,32 +39,36 @@ class Olympus_Google_Fonts {
 	 */
 	public function includes() {
 
+		// Custom uploads functionality.
+		require_once OGF_DIR_PATH . 'includes/class-ogf-fonts-taxonomy.php';
+		require_once OGF_DIR_PATH . 'admin/class-ogf-upload-fonts-screen.php';
+
 		// Required files for building the Google Fonts URL.
-		include OGF_DIR_PATH . 'includes/functions.php';
-		include OGF_DIR_PATH . 'includes/class-ogf-fonts.php';
+		require_once OGF_DIR_PATH . 'includes/functions.php';
+		require_once OGF_DIR_PATH . 'includes/class-ogf-fonts.php';
 
 		// Required files for the customizer settings.
-		require OGF_DIR_PATH . 'includes/customizer/panels.php';
-		include OGF_DIR_PATH . 'includes/customizer/settings.php';
-		include OGF_DIR_PATH . 'includes/customizer/output-css.php';
+		require_once OGF_DIR_PATH . 'includes/customizer/panels.php';
+		require_once OGF_DIR_PATH . 'includes/customizer/settings.php';
+		require_once OGF_DIR_PATH . 'includes/customizer/output-css.php';
 
 		// Required files for the Gutenberg editor.
-		include OGF_DIR_PATH . 'includes/gutenberg/output-css.php';
+		require_once OGF_DIR_PATH . 'includes/gutenberg/output-css.php';
 
 		// Notifications class.
-		include OGF_DIR_PATH . 'includes/class-ogf-notifications.php';
+		require_once OGF_DIR_PATH . 'includes/class-ogf-notifications.php';
 
 		// Welcome notice class.
-		include OGF_DIR_PATH . 'includes/class-ogf-welcome.php';
+		require_once OGF_DIR_PATH . 'includes/class-ogf-welcome.php';
 
 		// Reset class.
-		require OGF_DIR_PATH . 'includes/class-ogf-reset.php';
+		require_once OGF_DIR_PATH . 'includes/class-ogf-reset.php';
 
 		// Classic Editor class.
-		require OGF_DIR_PATH . 'includes/class-ogf-classic-editor.php';
+		require_once OGF_DIR_PATH . 'includes/class-ogf-classic-editor.php';
 
 		// News widget.
-		require OGF_DIR_PATH . 'includes/class-ogf-dashboard-widget.php';
+		require_once OGF_DIR_PATH . 'includes/class-ogf-dashboard-widget.php';
 
 	}
 
@@ -84,7 +88,7 @@ class Olympus_Google_Fonts {
 
 		$fonts = new OGF_Fonts();
 
-		if ( $fonts->has_custom_fonts() ) {
+		if ( $fonts->has_google_fonts() ) {
 			$url = $fonts->build_url();
 			wp_enqueue_style( 'olympus-google-fonts', $url, array(), OGF_VERSION );
 
@@ -123,6 +127,7 @@ class Olympus_Google_Fonts {
 
 		wp_localize_script( 'ogf-customize-controls', 'ogf_font_array', ogf_fonts_array() );
 		wp_localize_script( 'ogf-customize-controls', 'ogf_system_fonts', ogf_system_fonts() );
+		wp_localize_script( 'ogf-customize-controls', 'ogf_custom_fonts', ogf_custom_fonts() );
 		wp_localize_script( 'ogf-customize-controls', 'ogf_font_variants', ogf_font_variants() );
 	}
 
@@ -137,6 +142,7 @@ class Olympus_Google_Fonts {
 
 		wp_localize_script( 'ogf-customize-preview', 'ogf_elements', $elements );
 		wp_localize_script( 'ogf-customize-preview', 'ogf_system_fonts', ogf_system_fonts() );
+		wp_localize_script( 'ogf-customize-preview', 'ogf_custom_fonts', ogf_custom_fonts() );
 
 	}
 
@@ -154,10 +160,14 @@ class Olympus_Google_Fonts {
 
 		array_push( $links, $settings_link );
 
-		// Upgrade Link.
-		$pro_link = '<a href="https://fontsplugin.com/pro-upgrade/?utm_source=plugin&utm_medium=wpadmin&utm_campaign=upsell">' . esc_html__( 'Upgrade to Pro', 'olympus-google-fonts' ) . '</a>';
+		if ( ! defined( 'OGF_PRO' ) ) {
 
-		array_push( $links, $pro_link );
+			// Upgrade Link.
+			$pro_link = '<a href="https://fontsplugin.com/pro-upgrade/?utm_source=plugin&utm_medium=wpadmin&utm_campaign=upsell">' . esc_html__( 'Upgrade to Pro', 'olympus-google-fonts' ) . '</a>';
+
+			array_push( $links, $pro_link );
+
+		}
 
 		return $links;
 

@@ -49,6 +49,46 @@ class WPUPG_SC_Terms extends WPUPG_Template_Shortcode {
 					'value' => 'block',
 				),
 			),
+			'term_style' => array(
+				'default' => 'text',
+				'type' => 'dropdown',
+				'options' => array(
+					'text' => __( 'Text', 'wp-ultimate-post-grid' ),
+					'block' => __( 'Block', 'wp-ultimate-post-grid' ),
+				),
+			),
+			'block_horizontal_padding' => array(
+				'default' => '5px',
+				'type' => 'size',
+				'dependency' => array(
+					'id' => 'term_style',
+					'value' => 'block',
+				),
+			),
+			'block_vertical_padding' => array(
+				'default' => '2px',
+				'type' => 'size',
+				'dependency' => array(
+					'id' => 'term_style',
+					'value' => 'block',
+				),
+			),
+			'block_color' => array(
+				'default' => '#333333',
+				'type' => 'color',
+				'dependency' => array(
+					'id' => 'term_style',
+					'value' => 'block',
+				),
+			),
+			'block_text_color' => array(
+				'default' => '#ffffff',
+				'type' => 'color',
+				'dependency' => array(
+					'id' => 'term_style',
+					'value' => 'block',
+				),
+			),
 			'text_style' => array(
 				'default' => 'normal',
 				'type' => 'dropdown',
@@ -99,16 +139,22 @@ class WPUPG_SC_Terms extends WPUPG_Template_Shortcode {
 				$term_output .= $atts['term_separator'];
 			}
 
+			$style = '';
+
+			if ( 'block' === $atts['term_style'] ) {
+				$style = ' style="display: inline-block;padding:' . $atts['block_vertical_padding'] . ' ' . $atts['block_horizontal_padding'] . ';background-color:' . $atts['block_color'] . ';color:' . $atts['block_text_color'] . ';"';
+			}
+
 			if ( is_object( $term ) ) {
 				$link = (bool) $atts['links'] ? get_term_link( $term ) : false;
 
 				if ( $link && ! is_wp_error( $link ) ) {
-					$term_output .= '<a href="' . esc_attr( $link ) . '">' . $term->name . '</a>';
+					$term_output .= '<a href="' . esc_attr( $link ) . '" class="wpupg-item-term"' . $style . '>' . $term->name . '</a>';
 				} else {
-					$term_output .= $term->name;
+					$term_output .= '<span class="wpupg-item-term"' . $style . '>' . $term->name . '</span>';
 				}
 			} else {
-				$term_output .= $term;
+				$term_output .= '<span class="wpupg-item-term"' . $style . '>' . $term . '</span>';
 			}
 		}
 

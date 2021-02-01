@@ -64,7 +64,7 @@ class MetaSlider_Admin_Pages extends MetaSliderPlugin
         wp_enqueue_script('jquery-ui-core');
         wp_enqueue_script('jquery-ui-sortable');
 
-        wp_register_script('metaslider-admin-script', METASLIDER_ADMIN_URL . 'assets/dist/js/admin-' . sanitize_title(METASLIDER_VERSION) . '.js', array('jquery'), METASLIDER_VERSION, true);
+        wp_register_script('metaslider-admin-script', METASLIDER_ADMIN_URL . 'assets/dist/js/admin.js', array('jquery'), METASLIDER_VERSION, true);
         wp_localize_script('metaslider-admin-script', 'metaslider', array(
             'url' => __("URL", "ml-slider"),
             'caption' => __("Caption", "ml-slider"),
@@ -83,7 +83,6 @@ class MetaSlider_Admin_Pages extends MetaSliderPlugin
             'delete_slide_nonce' => wp_create_nonce('metaslider_delete_slide'),
             'undelete_slide_nonce' => wp_create_nonce('metaslider_undelete_slide'),
             'update_slide_image_nonce' => wp_create_nonce('metaslider_update_slide_image'),
-            'handle_notices_nonce' => wp_create_nonce('metaslider_handle_notices_nonce'),
             'useWithCaution' => __("Caution: This setting is for advanced developers only. If you're unsure, leave it checked.", "ml-slider")
         ));
         wp_enqueue_script('metaslider-admin-script');
@@ -92,7 +91,7 @@ class MetaSlider_Admin_Pages extends MetaSliderPlugin
         // Register components and add support for the REST API / Admin AJAX
         do_action('metaslider_register_admin_components');
         $dev = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG;
-        wp_register_script('metaslider-admin-components', METASLIDER_ADMIN_URL . 'assets/dist/js/app-' . sanitize_title(METASLIDER_VERSION) . ($dev ? '' : '.min') . '.js', array(), METASLIDER_VERSION, true);
+        wp_register_script('metaslider-admin-components', METASLIDER_ADMIN_URL . 'assets/dist/js/app' . ($dev ? '' : '.min') . '.js', array(), METASLIDER_VERSION, true);
 
         // Check if rest is available
         $is_rest_enabled = $this->is_rest_enabled();
@@ -106,6 +105,7 @@ class MetaSlider_Admin_Pages extends MetaSliderPlugin
             'metaslider_admin_assets' => METASLIDER_ADMIN_ASSETS_URL,
             'metaslider_page' => admin_url('admin.php?page=metaslider'),
             'theme_editor_link' => admin_url('admin.php?page=metaslider-theme-editor'),
+            'site_id' => get_current_blog_id(),
             'supports_rest' => $is_rest_enabled,
             'locale' => $this->gutenberg_get_jed_locale_data('ml-slider'),
             'default_locale' => $this->gutenberg_get_jed_locale_data('default'),
@@ -130,7 +130,7 @@ class MetaSlider_Admin_Pages extends MetaSliderPlugin
     public function load_styles()
     {
         wp_enqueue_style('metaslider-shepherd-css', METASLIDER_ADMIN_URL . 'assets/tether-shepherd/dist/css/shepherd-theme-arrows.css', false, METASLIDER_VERSION);
-        wp_enqueue_style('metaslider-admin-styles', METASLIDER_ADMIN_URL . 'assets/dist/css/admin-' . sanitize_title(METASLIDER_VERSION) . '.css', false, METASLIDER_VERSION);
+        wp_enqueue_style('metaslider-admin-styles', METASLIDER_ADMIN_URL . 'assets/dist/css/admin.css', false, METASLIDER_VERSION);
 
         // Hook to load more styles and scripts (from pro)
         do_action('metaslider_register_admin_styles');

@@ -2,7 +2,7 @@
 /**
  * WooCommerce Admin Functions
  *
- * @package  WooCommerce/Admin/Functions
+ * @package  WooCommerce\Admin\Functions
  * @version  2.4.0
  */
 
@@ -210,7 +210,7 @@ function wc_maybe_adjust_line_item_product_stock( $item, $item_quantity = -1 ) {
 	$item_quantity         = wc_stock_amount( $item_quantity >= 0 ? $item_quantity : $item->get_quantity() );
 	$already_reduced_stock = wc_stock_amount( $item->get_meta( '_reduced_stock', true ) );
 
-	if ( ! $product || ! $product->managing_stock() || ! $already_reduced_stock || $item_quantity === $already_reduced_stock ) {
+	if ( ! $product || ! $product->managing_stock() ) {
 		return false;
 	}
 
@@ -473,4 +473,24 @@ function wc_render_invalid_variation_notice( $product_object ) {
 		</div>
 		<?php
 	}
+}
+
+/**
+ * Get current admin page URL.
+ *
+ * Returns an empty string if it cannot generate a URL.
+ *
+ * @internal
+ * @since 4.4.0
+ * @return string
+ */
+function wc_get_current_admin_url() {
+	$uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+	$uri = preg_replace( '|^.*/wp-admin/|i', '', $uri );
+
+	if ( ! $uri ) {
+		return '';
+	}
+
+	return remove_query_arg( array( '_wpnonce', '_wc_notice_nonce', 'wc_db_update', 'wc_db_update_nonce', 'wc-hide-notice' ), admin_url( $uri ) );
 }

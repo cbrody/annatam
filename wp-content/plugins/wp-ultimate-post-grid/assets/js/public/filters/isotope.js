@@ -210,6 +210,7 @@ window.WPUPG_Filter_isotope = {
             button.addEventListener( 'click', (e) => {
                 if ( e.which === 1 ) { // Left mouse click.
                     filter.onClickButton( button );
+                    button.blur();
                 }
             } );
             button.addEventListener( 'keydown', (e) => {

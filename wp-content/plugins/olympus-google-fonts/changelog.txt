@@ -1,3 +1,61 @@
+= 2.3.8 =
+
+* Administrators can now disable the editor-level font controls
+
+= 2.3.7 =
+
+* Add compatibility pack for ColorLib themes
+
+= 2.3.6 =
+
+* Add 'none' option to text-transform in the Customizer
+* Remove useless console.log in Gutenberg
+
+= 2.3.5 =
+
+* Fix bug in Classic Editor when base fonts are not chosen
+
+= 2.3.4 =
+
+* Improve CSS specificity
+
+= 2.3.3 =
+
+* Classic Editor bug fix
+
+= 2.3.2 =
+
+* Fix join() error in PHP7.4
+
+= 2.3.1 =
+
+* Gutenberg block fixes
+
+= 2.3.0 =
+
+* Add font-display option (block, swap, fallback, optional)
+
+= 2.2.4 =
+
+* Add failsafe to protect against fonts getting removed
+
+= 2.2.3 =
+
+* Update fonts list
+
+= 2.2.2 =
+
+* Block Editor improvements
+
+= 2.2.1 =
+
+* Fix broken activation redirect
+
+= 2.2.0 =
+
+* Performance improvements
+* Add easy access links in wp-admin
+
 = 2.1.9 =
 
 * Fix minor javascript error

@@ -22,6 +22,7 @@ Vue.mixin({
 
 		// Consider using WP defaults too. Caveat: large filesize
 		// setLocaleData(window.metaslider_api.default_locale, 'default')
+		this.siteId = window.metaslider_api.site_id
 		this.proUser = window.metaslider_api.proUser
 		this.hoplink = window.metaslider_api.hoplink
 		this.themeEditorLink = window.metaslider_api.theme_editor_link
@@ -44,7 +45,7 @@ Vue.mixin({
 				toast.removeEventListener('mouseleave', Swal.resumeTimer)
 			},
 			onBeforeOpen: (toast) => {
-				
+
 				// Offset the toast message based on the admin menu size
 				let dir = 'rtl' === document.dir ? 'right' : 'left'
 				toast.parentElement.style[dir] = document.getElementById('adminmenu').offsetWidth + 'px'
@@ -61,7 +62,7 @@ Vue.mixin({
 				filename = source.split('/').pop().split('#')[0].split('?')[0]
 			} catch (error) {}
 			this.notifyError(
-				'window/global-js-error', 
+				'window/global-js-error',
 					(message.length > 100 ? message.substring(0, 100) + '...' : message) +
 					(filename.length ? ` (${filename})` : ''),
 				true)

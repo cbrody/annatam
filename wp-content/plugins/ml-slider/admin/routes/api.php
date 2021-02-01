@@ -73,11 +73,17 @@ class MetaSlider_Api
         add_action('wp_ajax_ms_import_images', array(self::$instance, 'import_images'));
 
         // Settings
-        add_action('wp_ajax_ms_update_all_settings', array(self::$instance, 'save_all_settings'));
-        add_action('wp_ajax_ms_update_single_setting', array(self::$instance, 'save_single_setting'));
-        add_action('wp_ajax_ms_update_global_setting', array(self::$instance, 'save_global_setting'));
-        add_action('wp_ajax_ms_get_default_settings', array(self::$instance, 'get_default_settings'));
-        add_action('wp_ajax_ms_save_default_settings', array(self::$instance, 'save_default_settings'));
+        add_action('wp_ajax_ms_update_user_setting', array(self::$instance, 'save_user_setting'));
+        add_action('wp_ajax_ms_update_all_slideshow_settings', array(self::$instance, 'save_all_slideshow_settings'));
+        add_action('wp_ajax_ms_update_single_slideshow_setting', array(self::$instance, 'save_single_slideshow_setting'));
+        add_action('wp_ajax_ms_get_slideshow_default_settings', array(self::$instance, 'get_slideshow_default_settings'));
+        add_action('wp_ajax_ms_save_slideshow_default_settings', array(self::$instance, 'save_slideshow_default_settings'));
+
+        // Global settings
+        add_action('wp_ajax_ms_get_single_setting', array(self::$instance, 'ms_get_single_setting'));
+        add_action('wp_ajax_ms_get_global_settings', array(self::$instance, 'get_global_settings'));
+        add_action('wp_ajax_ms_update_global_settings', array(self::$instance, 'save_global_settings'));
+        add_action('wp_ajax_ms_update_global_settings_single', array(self::$instance, 'save_global_settings_single'));
 
         // Other
         add_action('wp_ajax_set_tour_status', array(self::$instance, 'set_tour_status'));
@@ -568,7 +574,7 @@ class MetaSlider_Api
      *
      * @param object $request The request
      */
-    public function save_single_setting($request)
+    public function save_single_slideshow_setting($request)
     {
         if (!$this->can_access()) {
             $this->deny_access();
@@ -603,7 +609,7 @@ class MetaSlider_Api
      *
      * @param object $request The request
      */
-    public function save_all_settings($request)
+    public function save_all_slideshow_settings($request)
     {
         if (!$this->can_access()) {
             $this->deny_access();
@@ -630,7 +636,7 @@ class MetaSlider_Api
      *
      * @param object $request The request
      */
-    public function save_global_setting($request)
+    public function save_user_setting($request)
     {
         if (!$this->can_access()) {
             $this->deny_access();
@@ -651,19 +657,12 @@ class MetaSlider_Api
     /**
      * Get default settings
      */
-    public function get_default_settings()
+    public function get_slideshow_default_settings()
     {
         if (!$this->can_access()) {
             $this->deny_access();
         }
-
-        $settings = MetaSlider_Slideshow_Settings::defaults();
-
-        if (is_wp_error($settings)) {
-            wp_send_json_error(array('message' => $settings->getMessage()), 400);
-        }
-
-        wp_send_json_success($settings, 200);
+        wp_send_json_success(MetaSlider_Slideshow_Settings::defaults(), 200);
     }
 
     /**
@@ -671,7 +670,7 @@ class MetaSlider_Api
      *
      * @param object $request The request
      */
-    public function save_default_settings($request)
+    public function save_slideshow_default_settings($request)
     {
         if (!$this->can_access()) {
             $this->deny_access();
@@ -694,6 +693,110 @@ class MetaSlider_Api
         update_option('metaslider_default_settings', $settings);
 
         wp_send_json_success($settings, 200);
+    }
+
+    /**
+     * Get a single setting
+     *
+     * @param object $request The request
+     */
+    public function get_single_setting($request)
+    {
+        if (!$this->can_access()) {
+            $this->deny_access();
+        }
+        $data = $this->get_request_data($request, array('setting'));
+
+        $key = (0 === strpos($data['setting'], 'metaslider_')) ? $data['setting'] : 'metaslider_' . $data['setting'];
+        if ($setting = get_option($key)) {
+            return wp_send_json_success($setting, 200);
+        }
+
+        wp_send_json_success(array(), 200);
+    }
+
+    /**
+     * Get global settings whether multisite or not
+     */
+    public function get_global_settings()
+    {
+        if (!$this->can_access()) {
+            $this->deny_access();
+        }
+
+        if (is_multisite() && $settings = get_site_option('metaslider_global_settings')) {
+            return wp_send_json_success($settings, 200);
+        }
+
+        if ($settings = get_option('metaslider_global_settings')) {
+            return wp_send_json_success($settings, 200);
+        }
+
+        wp_send_json_success(array(), 200);
+    }
+
+    /**
+     * Save global settings whether multisite or other
+     *
+     * @param object $request The request
+     */
+    public function save_global_settings($request)
+    {
+        if (!$this->can_access()) {
+            $this->deny_access();
+        }
+
+        $data = $this->get_request_data($request, array('settings'));
+        $settings = json_decode($data['settings'], true);
+
+        // TODO: validate the license if not ''
+
+        // If the user has opted out, clean up. If they opt in, that will load on next WP reload
+        if (!isset($settings['optIn']) || (isset($settings['optIn']) && !filter_var($settings['optIn'], FILTER_VALIDATE_BOOLEAN))) {
+            if (!class_exists('MetaSlider_Analytics')) {
+                require_once(METASLIDER_PATH . 'admin/support/Analytics.php');
+            }
+            $analytics = new MetaSlider_Analytics();
+            $analytics->optout();
+
+            // This includes a setting "metaslider_user_explicitly_opted_out" which can be used elsewhere to
+            // say "Hey, this user actually pressed the button to enable or disable their 'opt' preference"
+            update_option('metaslider_user_explicitly_opted_out', get_current_user_id().':'.time(), true);
+        }
+
+        update_option('metaslider_global_settings', $settings, true);
+
+        // This is meant to keep track of the user who opted in last. This is so that the user is
+        // able to understand exactly when the optin occured and by whom exactly.
+        if (isset($settings['optIn']) && filter_var($settings['optIn'], FILTER_VALIDATE_BOOLEAN)) {
+            $analytics = new MetaSlider_Analytics();
+            $analytics->optin();
+        }
+
+        wp_send_json_success($settings, 200);
+    }
+
+    /**
+     * Update a global single setting
+     *
+     * @param object $request The request
+     */
+    public function save_global_settings_single($request)
+    {
+        if (!$this->can_access()) {
+            $this->deny_access();
+        }
+
+        $data = $this->get_request_data($request, array('setting_key', 'setting_value'));
+
+        // Ensure the key is prefixed (ie only allow access to metaslider_ settings)
+        $key = $data['setting_key'];
+        $key = (0 === strpos($key, 'metaslider_')) ? $key : 'metaslider_' . $key;
+
+        // This will not provide a useful return (reminder, key is prefixed)
+        update_option($key, $data['setting_value'], true);
+
+        wp_send_json_success('OK', 200);
     }
 
     /**
@@ -859,121 +962,139 @@ if (class_exists('WP_REST_Controller')) :
             register_rest_route($this->namespace, '/slideshow/all', array(array(
                 'methods' => 'GET',
                 'callback' => array($this->api, 'get_slideshows'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
             register_rest_route($this->namespace, '/slideshow/list', array(array(
                 'methods' => 'GET',
                 'callback' => array($this->api, 'list_slideshows'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
             register_rest_route($this->namespace, '/slideshow/single', array(array(
                 'methods' => 'GET',
                 'callback' => array($this->api, 'get_single_slideshow'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
             register_rest_route($this->namespace, '/slideshow/preview', array(array(
                 'methods' => 'GET',
                 'callback' => array($this->api, 'get_preview'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
             register_rest_route($this->namespace, '/slideshow/save', array(array(
                 'methods' => 'POST',
                 'callback' => array($this->api, 'save_slideshow'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
             register_rest_route($this->namespace, '/slideshow/delete', array(array(
                 'methods' => 'POST',
                 'callback' => array($this->api, 'delete_slideshow'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
             register_rest_route($this->namespace, '/slideshow/duplicate', array(array(
                 'methods' => 'POST',
                 'callback' => array($this->api, 'duplicate_slideshow'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
             register_rest_route($this->namespace, '/slideshow/search', array(array(
                 'methods' => 'GET',
                 'callback' => array($this->api, 'search_slideshows'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
             register_rest_route($this->namespace, '/slideshow/export', array(array(
                 'methods' => 'GET',
                 'callbacks' => array($this->api, 'export_slideshows'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
             register_rest_route($this->namespace, '/slideshow/import', array(array(
                 'methods' => 'POST',
                 'callback' => array($this->api, 'import_slideshows'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
             register_rest_route($this->namespace, '/themes/all', array(array(
                 'methods' => 'GET',
                 'callback' => array($this->api, 'get_all_free_themes'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
             register_rest_route($this->namespace, '/themes/custom', array(array(
                 'methods' => 'GET',
                 'callback' => array($this->api, 'get_custom_themes'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
             register_rest_route($this->namespace, '/themes/set', array(array(
                 'methods' => 'POST',
                 'callback' => array($this->api, 'set_theme'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
 
             register_rest_route($this->namespace, '/import/images', array(array(
                 'methods' => 'POST',
                 'callback' => array($this->api, 'import_images'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
 
             register_rest_route($this->namespace, '/tour/status', array(array(
                 'methods' => 'POST',
                 'callback' => array($this->api, 'set_tour_status'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
 
-            register_rest_route($this->namespace, '/settings/save', array(array(
+            register_rest_route($this->namespace, '/settings/user/save', array(array(
                 'methods' => 'POST',
-                'callback' => array($this->api, 'save_all_settings'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'callback' => array($this->api, 'save_user_setting'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
 
-            register_rest_route($this->namespace, '/settings/save-single', array(array(
+            register_rest_route($this->namespace, '/settings/global/save', array(array(
                 'methods' => 'POST',
-                'callback' => array($this->api, 'save_single_setting'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'callback' => array($this->api, 'save_global_settings'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
 
-            register_rest_route($this->namespace, '/settings/save-global', array(array(
+            register_rest_route($this->namespace, '/settings/global/single/save', array(array(
                 'methods' => 'POST',
-                'callback' => array($this->api, 'save_global_setting'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'callback' => array($this->api, 'save_global_settings_single'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
 
-            register_rest_route($this->namespace, '/settings/defaults', array(array(
+            register_rest_route($this->namespace, '/settings/single', array(array(
                 'methods' => 'GET',
-                'callback' => array($this->api, 'get_default_settings'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'callback' => array($this->api, 'get_single_setting'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
 
-            register_rest_route($this->namespace, '/settings/defaults/save', array(array(
+            register_rest_route($this->namespace, '/settings/global', array(array(
+                'methods' => 'GET',
+                'callback' => array($this->api, 'get_global_settings'),
+                'permission_callback' => array($this->api, 'can_access')
+            )));
+
+            register_rest_route($this->namespace, '/settings/slideshow/save', array(array(
                 'methods' => 'POST',
-                'callback' => array($this->api, 'save_default_settings'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'callback' => array($this->api, 'save_all_slideshow_settings'),
+                'permission_callback' => array($this->api, 'can_access')
+            )));
+
+            register_rest_route($this->namespace, '/settings/slideshow/save-single', array(array(
+                'methods' => 'POST',
+                'callback' => array($this->api, 'save_single_slideshow_setting'),
+                'permission_callback' => array($this->api, 'can_access')
+            )));
+
+            register_rest_route($this->namespace, '/settings/slideshow/defaults', array(array(
+                'methods' => 'GET',
+                'callback' => array($this->api, 'get_slideshow_default_settings'),
+                'permission_callback' => array($this->api, 'can_access')
+            )));
+
+            register_rest_route($this->namespace, '/settings/slideshow/defaults/save', array(array(
+                'methods' => 'POST',
+                'callback' => array($this->api, 'save_slideshow_default_settings'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
 
             register_rest_route($this->namespace, '/images/ids-from-filenames', array(array(
                 'methods' => 'POST',
                 'callback' => array($this->api, 'get_image_ids_from_file_name'),
-                'permission_callback' => array($this->api, 'can_access'),
-            )));
-
-            register_rest_route($this->namespace, '/settings/defaults', array(array(
-                'methods' => 'GET',
-                'callback' => array($this->api, 'get_default_settings'),
-                'permission_callback' => array($this->api, 'can_access'),
+                'permission_callback' => array($this->api, 'can_access')
             )));
         }
     }

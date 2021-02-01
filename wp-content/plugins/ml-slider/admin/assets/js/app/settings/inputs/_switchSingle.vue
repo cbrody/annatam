@@ -40,10 +40,7 @@
 import { default as LoadingElement } from './shimmers/_switchShimmer'
 export default {
 	props: {
-		value: {
-			type: Boolean,
-			default: true
-		},
+		value: {},
 		containerMargin: {
 			type: String,
 			default: 'mb-4'

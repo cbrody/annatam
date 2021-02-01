@@ -29,13 +29,24 @@ if ( ! class_exists( 'OGF_Classic_Editor' ) ) :
 		private $ogf_fonts;
 
 		/**
+		 * Array of system fonts.
+		 *
+		 * @var array
+		 */
+		private $system_fonts;
+
+		/**
 		 * Class constructor.
 		 */
 		public function __construct() {
-			$this->ogf_fonts = new OGF_Fonts();
-			if ( ! $this->ogf_fonts->has_custom_fonts() ) {
+
+			if ( true === get_theme_mod( 'ogf_disable_post_level_controls', 1 ) ) {
 				return;
 			}
+
+			$this->ogf_fonts    = new OGF_Fonts();
+			$this->system_fonts = ogf_system_fonts();
+
 			add_filter( 'mce_buttons', array( $this, 'tinymce_add_buttons' ), 1 );
 			add_filter( 'tiny_mce_before_init', array( $this, 'tinymce_custom_options' ) );
 			add_filter( 'ogf_classic_font_formats', array( $this, 'tinymce_add_fonts' ) );
@@ -64,6 +75,24 @@ if ( ! class_exists( 'OGF_Classic_Editor' ) ) :
 			$base_type     = get_theme_mod( 'ogf_body_font' );
 			$headings_type = get_theme_mod( 'ogf_headings_font' );
 
+			if ( ogf_is_custom_font( $base_type ) ) {
+				$base_type = str_replace( 'cf-', '', $base_type );
+			} elseif ( ogf_is_system_font( $base_type ) ) {
+				$base_type = str_replace( 'sf-', '', $base_type );
+				$base_type = $this->system_fonts[ $base_type ]['stack'];
+			} elseif ( ogf_is_google_font( $base_type ) ) {
+				$base_type = $this->ogf_fonts->get_font_name( $base_type );
+			}
+
+			if ( ogf_is_custom_font( $headings_type ) ) {
+				$headings_type = str_replace( 'cf-', '', $headings_type );
+			} elseif ( ogf_is_system_font( $headings_type ) ) {
+				$headings_type = str_replace( 'sf-', '', $headings_type );
+				$headings_type = $this->system_fonts[ $headings_type ]['stack'];
+			} elseif ( ogf_is_google_font( $headings_type ) ) {
+				$headings_type = $this->ogf_fonts->get_font_name( $headings_type );
+			}
+
 			$opt['font_formats'] = apply_filters( 'ogf_classic_font_formats', 'Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;' );
 
 			if ( ! isset( $opt['content_style'] ) ) {
@@ -77,6 +106,7 @@ if ( ! class_exists( 'OGF_Classic_Editor' ) ) :
 				$opt['content_style'] .= '#tinymce h1, #tinymce h2, #tinymce h3, #tinymce h4, #tinymce h5, #tinymce h6 { font-family: ' . $headings_type . ' !important; }';
 			}
 
+			$opt['content_style'] .= render_custom_font_css();
 			return $opt;
 		}
 
@@ -89,7 +119,13 @@ if ( ! class_exists( 'OGF_Classic_Editor' ) ) :
 			$new_default = '';
 			$choices     = $this->ogf_fonts->choices;
 			foreach ( array_unique( $choices ) as $font ) {
-				if ( ! ogf_is_system_font( $font ) ) {
+				if ( ogf_is_system_font( $font ) ) {
+					// do nothing.
+				} elseif ( ogf_is_custom_font( $font ) ) {
+					$fonts = ogf_custom_fonts();
+					$font = str_replace( 'cf-', '', $font );
+					$new_default .= $fonts[ $font ]['label'] . '=' . $fonts[ $font ]['stack'] . ';';
+				} else {
 					$new_default .= $this->ogf_fonts->get_font_name( $font ) . '=' . $this->ogf_fonts->get_font_name( $font ) . ';';
 				}
 			}
@@ -102,7 +138,7 @@ if ( ! class_exists( 'OGF_Classic_Editor' ) ) :
 		 */
 		public function google_fonts_enqueue() {
 			global $editor_styles;
-			if ( $this->ogf_fonts->has_custom_fonts() ) {
+			if ( $this->ogf_fonts->has_google_fonts() ) {
 				$editor_styles[] = $this->ogf_fonts->build_url();
 			}
 		}

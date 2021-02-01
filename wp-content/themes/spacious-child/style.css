@@ -13,6 +13,7 @@ body, #page {
 	background: transparent;
 	border: none;
 	box-shadow: none;
+	padding-top: 10px;
 }
 
 #site-title a {
@@ -33,6 +34,12 @@ body, #page {
     float: left;
 }
 
+.spacious-header-display-four .bottom-menu .header-action {
+	padding-top: 0;	
+	position: absolute;
+	top: 3rem;
+	right: 2rem;
+}
 #header-left-right,
 .bottom-menu .header-action {
     float: right !important;
@@ -42,10 +49,12 @@ body, #page {
     border-bottom: none;
 }
 
+@media screen and (min-width: 600px) {
 #menu-main {
 	float: none;
-	margin: 0 auto;
+	margin: 0 auto 0 8rem;
 	text-align: center;
+}
 }
 
 .menu-primary-container:after {
@@ -53,7 +62,7 @@ body, #page {
 }
 
 #site-navigation {
-	width: 95%;
+	width: 85%;
 }
 
 #menu-main li {
@@ -63,7 +72,6 @@ body, #page {
 
 .site-header .menu-toggle {
 	position: relative !important;
-	background: #5f8aaa;
 	margin: 2em auto 0;
 	padding: 10px 20px;
 }

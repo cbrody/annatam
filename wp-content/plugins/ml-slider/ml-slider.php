@@ -6,7 +6,7 @@
  * Plugin Name: MetaSlider
  * Plugin URI:  https://www.metaslider.com
  * Description: Easy to use slideshow plugin. Create SEO optimised responsive slideshows with Nivo Slider, Flex Slider, Coin Slider and Responsive Slides.
- * Version:     3.17.6
+ * Version:     3.19.0
  * Author:      MetaSlider
  * Author URI:  https://www.metaslider.com
  * License:     GPL-2.0+
@@ -35,7 +35,7 @@ class MetaSliderPlugin
      *
      * @var string
      */
-    public $version = '3.17.6';
+    public $version = '3.19.0';
 
     /**
      * Pro installed version number
@@ -117,6 +117,12 @@ class MetaSliderPlugin
             $this->gutenberg = new MetaSlider_Gutenberg($this);
         }
 
+        $capability = apply_filters('metaslider_capability', 'edit_others_posts');
+        if (is_admin() && current_user_can($capability)) {
+            $analytics = new MetaSlider_Analytics();
+            $analytics->load();
+        }
+
         // require_once(METASLIDER_PATH . 'admin/lib/temporary.php');
         require_once(METASLIDER_PATH . 'admin/lib/callout.php');
     }
@@ -162,7 +168,8 @@ class MetaSliderPlugin
             'metaslider_slide'  	 => METASLIDER_PATH . 'admin/Slideshows/slides/Slide.php',
             'metaslider_themes'  	 => METASLIDER_PATH . 'admin/Slideshows/Themes.php',
             'metaslider_image'  	 => METASLIDER_PATH . 'admin/Slideshows/Image.php',
-            'metaslider_gutenberg'   => METASLIDER_PATH . 'admin/Gutenberg.php'
+            'metaslider_gutenberg'   => METASLIDER_PATH . 'admin/Gutenberg.php',
+            'metaslider_analytics'   => METASLIDER_PATH . 'admin/support/Analytics.php'
         );
     }
 
@@ -378,7 +385,7 @@ class MetaSliderPlugin
         $title = metaslider_pro_is_active() ? 'MetaSlider Pro' : 'MetaSlider';
 
         $this->admin->add_page($title, 'metaslider');
-        $this->admin->add_page(__('Settings', 'default'), 'metaslider-settings', 'metaslider');
+        $this->admin->add_page(__('Settings & Help', 'default'), 'metaslider-settings', 'metaslider');
 
         if (metaslider_user_sees_upgrade_page()) {
             $this->admin->add_page(__('Add-ons', 'ml-slider'), 'upgrade-metaslider', 'metaslider');
@@ -790,7 +797,6 @@ class MetaSliderPlugin
         wp_redirect(admin_url("admin.php?page=metaslider"));
     }
 
-
     /**
      * Create a new slider
      */
@@ -1108,15 +1114,21 @@ class MetaSliderPlugin
         <div id="metaslider-ui" class="metaslider metaslider-ui block min-h-screen p-0 pb-24 bg-gray-lightest">
 		<?php
             $slider_settings = get_post_meta($slider_id, 'ml-slider_settings', true);
-        $tour_position = get_option('metaslider_tour_cancelled_on'); ?>
+        $tour_position = get_option('metaslider_tour_cancelled_on');
+
+        if (!class_exists('MetaSlider_Analytics')) {
+            require_once(METASLIDER_PATH . 'admin/support/Analytics.php');
+        }
+        $analytics = new MetaSlider_Analytics(); ?>
 
 		<metaslider
 			:id='<?php echo $slider_id; ?>'
 			v-bind:settings='<?php echo esc_attr(json_encode($slider_settings)); ?>'
 			tour-status="<?php echo $tour_position ? $tour_position : false ?>"
+            show-opt-in="<?php echo !$analytics::siteIsOptin() && !get_user_option('metaslider_analytics_onboarding_status'); ?>"
 			inline-template>
 			<span>
-			<form @keydown.enter.prevent="" autocomplete="off" id="ms-form-settings" accept-charset="UTF-8" action="<?php echo admin_url('admin-post.php'); ?>" method="post" :class="{ 'respect-ie11': isIE11 }">
+			<form @submit.prevent="" @keydown.enter.prevent="" autocomplete="off" id="ms-form-settings" accept-charset="UTF-8" action="<?php echo admin_url('admin-post.php'); ?>" method="post" :class="{ 'respect-ie11': isIE11 }">
 
 				<?php include METASLIDER_PATH."admin/views/pages/parts/toolbar.php"; ?>
 
@@ -1126,7 +1138,7 @@ class MetaSliderPlugin
                 // If there is no slideshow, show the start page and close out
                 if (!$this->slider) {
                     include METASLIDER_PATH."admin/views/pages/start.php";
-                    echo '</form></div></metaslider>';
+                    echo '</form><metaslider-utility-modal></metaslider-utility-modal></span></metaslider>';
                     return;
                 } ?>
 				<div v-if="current && current.hasOwnProperty('id')" id='poststuff' class="metaslider-inner wp-clearfix">

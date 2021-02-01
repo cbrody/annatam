@@ -9,14 +9,14 @@ class MetaSlider_Slideshow_Settings {
 
 	/**
 	 * Themes class
-	 * 
+	 *
 	 * @var object | bool
 	 */
 	private $settings;
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param string|null $slideshow_id The settings object
 	 */
 	public function __construct($slideshow_id = null) {
@@ -26,7 +26,7 @@ class MetaSlider_Slideshow_Settings {
 	/**
 	 * Returns settings
 	 *
-	 * @return array
+	 * @return object
 	 */
 	public function get_settings() {
 		return $this->settings ? $this->settings : self::defaults();
@@ -34,7 +34,7 @@ class MetaSlider_Slideshow_Settings {
 
 	/**
 	 * Returns a single setting
-	 * 
+	 *
 	 * @param string $setting A single setting name
 	 *
 	 * @return mixed|WP_error The setting result or an error object
@@ -46,7 +46,7 @@ class MetaSlider_Slideshow_Settings {
 	/**
 	 * Returns the default settings
 	 *
-	 * @return array 
+	 * @return array
 	 */
 	public static function defaults() {
 		$defaults = array(

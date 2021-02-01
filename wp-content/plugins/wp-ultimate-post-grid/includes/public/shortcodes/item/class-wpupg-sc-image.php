@@ -68,6 +68,10 @@ class WPUPG_SC_Image extends WPUPG_Template_Shortcode {
 				'default' => '#666666',
 				'type' => 'color',
 			),
+			'link' => array(
+				'default' => '0',
+				'type' => 'toggle',
+			),
 		);
 		parent::init();
 	}
@@ -124,6 +128,17 @@ class WPUPG_SC_Image extends WPUPG_Template_Shortcode {
 				$img = str_ireplace( ' style="', ' style="' . $style, $img );
 			} else {
 				$img = str_ireplace( '<img ', '<img style="' . $style . '" ', $img );
+			}
+		}
+
+		// Link image.
+		if ( $atts['link'] ) {
+			$url = $item->url();
+
+			if ( false !== stripos( $img, ' href="' ) ) {
+				$img = preg_replace( '/\shref=\"[^\"]*"/', ' href="' . esc_url( $url ) . '"', $img );
+			} else {
+				$img = '<a href="' . esc_url( $url ) . '">' . $img . '</a>';
 			}
 		}
 

@@ -67,9 +67,13 @@ class MetaSlider_Notices extends Updraft_Notices_1_0
     public function add_notice_assets()
     {
         wp_enqueue_style('ml-slider-notices-css', METASLIDER_ADMIN_URL . 'assets/css/notices.css', false, METASLIDER_VERSION);
-        wp_localize_script('metaslider-admin-script', 'metaslider_notices', array(
-            'handle_notices_nonce' => wp_create_nonce('metaslider_handle_notices_nonce')
-        ));
+        wp_register_script('metaslider-notices-extra-js', '');
+        wp_enqueue_script('metaslider-notices-extra-js');
+        $nonce = wp_create_nonce('metaslider_handle_notices_nonce');
+        $this->wp_add_inline_script(
+            'metaslider-notices-extra-js',
+            "window.metaslider_notices_handle_notices_nonce = '{$nonce}'"
+        );
     }
 
     /**
@@ -241,7 +245,7 @@ class MetaSlider_Notices extends Updraft_Notices_1_0
      * @param  string $product_name    Product name
      * @return bool
      */
-    protected function translation_needed($plugin_base_dir = null, $product_name = null)
+    protected function translation_needed($plugin_base_dir = '', $product_name = '')
     {
         return parent::translation_needed(METASLIDER_PATH, 'ml-slider');
     }
@@ -451,7 +455,7 @@ class MetaSlider_Notices extends Updraft_Notices_1_0
         );
         $message = isset($messages[$type]) ? $messages[$type] : __('Read more', 'ml-slider');
 
-        return '<a class="updraft_notice_link underline text-blue-dark" href="' . $this->get_notice_url($link) . '">' . $message . '</a>';
+        return '<a class="updraft_notice_link underline text-blue-dark" target="_blank" href="' . $this->get_notice_url($link) . '">' . $message . '</a>';
     }
 
     /**
@@ -623,5 +627,33 @@ class MetaSlider_Notices extends Updraft_Notices_1_0
             (defined('METASLIDER_FORCE_PRO_NOTICES') && METASLIDER_FORCE_PRO_NOTICES) ||
             (defined('METASLIDER_FORCE_LITE_NOTICES') && METASLIDER_FORCE_LITE_NOTICES) ||
             (defined('METASLIDER_DISABLE_SEASONAL_NOTICES') && METASLIDER_DISABLE_SEASONAL_NOTICES);
+    }
+
+    /**
+     * Polyfill to handle the wp_add_inline_script() function.
+     *
+     * @param  string $handle   The script identifier
+     * @param  string $data     The script to add, without <script> tags
+     * @param  string $position Whether to output before or after
+     *
+     * @return object|bool
+     */
+    public function wp_add_inline_script($handle, $data, $position = 'after')
+    {
+        if (function_exists('wp_add_inline_script')) {
+            return wp_add_inline_script($handle, $data, $position);
+        }
+        global $wp_scripts;
+        if (!$data) {
+            return false;
+        }
+
+        // First fetch any existing scripts
+        $script = $wp_scripts->get_data($handle, 'data');
+
+        // Append to the end
+        $script .= $data;
+
+        return $wp_scripts->add_data($handle, 'data', $script);
     }
 }

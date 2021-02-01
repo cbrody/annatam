@@ -23,42 +23,55 @@
 		if ( $classes ) {
 			echo ' class="', join( ' ', $classes ), '"';
 		}
-		?>><a href="<?php the_permalink(); ?>"<?php echo $this->customs[ 'link_target' ]; ?>><?php 
+		$aria_current = $queried_object_id === $r->post->ID ? ' aria-current="page"' : '';
+		?>><a href="<?php the_permalink(); ?>"<?php echo $this->customs[ 'link_target' ]; echo $aria_current; ?>><?php 
 		if ( $bools[ 'show_thumb' ] ) {
-			$is_thumb = false;
+			$thumb = '';
 			// if always only the default image
 			if ( $bools[ 'use_default_only' ] ) {
-				echo $default_img;
+				$thumb = $default_img;
 			// if only first image
 			} elseif ( $bools[ 'only_1st_img' ] ) {
 				// try to find and to display the first post image and to return success
-				$is_thumb = $this->the_first_post_image();
+				$thumb = $this->the_first_post_image( $attr );
 			} else {
 				// look for featured image
 				if ( has_post_thumbnail() ) {
 					// if there is featured image then show it
-					the_post_thumbnail( $this->customs[ 'thumb_dimensions' ] );
-					$is_thumb = true;
+					$thumb = get_the_post_thumbnail( null, $this->customs[ 'thumb_dimensions' ], $attr );
 				} else {
 					// if user wishes first image trial
 					if ( $bools[ 'try_1st_img' ] ) {
 						// try to find and to display the first post image and to return success
-						$is_thumb = $this->the_first_post_image();
+						$thumb = $this->the_first_post_image( $attr );
 					} // if try_1st_img 
 				} // if has_post_thumbnail
 			} // if only_1st_img
+			if ( $thumb ) {
+				echo $thumb;
 			// if there is no image 
-			if ( ! $is_thumb ) {
+			} else {
 				// if user allows default image then
 				if ( $bools[ 'use_default' ] ) {
 					echo $default_img;
 				} // if use_default
-			} // if not is_thumb
-			// (else do nothing)
+			} // if thumb
 		} // if show_thumb
 		// show title if wished
 		if ( ! $bools[ 'hide_title' ] ) {
-			?><span class="rpwwt-post-title"><?php if ( $post_title = $this->get_the_trimmed_post_title() ) { echo $post_title; } else { the_ID(); } ?></span><?php
+			?><span class="rpwwt-post-title"><?php
+			$post_title = $this->get_the_trimmed_post_title();
+			if ( $post_title ) {
+				echo $post_title;
+			} else {
+				printf(
+					'%s<span class="screen-reader-text"> %s %d</span>',
+					$this->defaults[ 'no_title' ],
+					$this->defaults[ 'Post' ],
+					get_the_ID() 
+				);
+			}
+			?></span><?php
 		}
 		?></a><?php 
 		if ( $bools[ 'show_author' ] ) {

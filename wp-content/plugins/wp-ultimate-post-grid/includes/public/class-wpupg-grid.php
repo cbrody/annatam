@@ -829,42 +829,24 @@ class WPUPG_Grid {
 				'per_taxonomy' => array(),
 			);
 			$taxonomies = $this->filters_taxonomies();
-
-			foreach ( $taxonomies as $taxonomy ) {
-				$terms['per_taxonomy'][ $taxonomy ] = array();
-			}
 	
 			// Only need to get terms if there actually are taxonomies.
 			if ( count( $taxonomies ) ) {
 				$post_ids = $this->all_ids( $grid_args );
-	
-				foreach ( $post_ids as $post_id ) {
-					$terms['per_item'][ $post_id ] = array();
-		
-					foreach ( $taxonomies as $taxonomy ) {
-						$terms['per_item'][ $post_id ][ $taxonomy ] = array(
-							'terms' => array(),
-							'parent_terms' => array(),
-						);
-		
-						$taxonomy_terms = get_terms( array(
-							'taxonomy' => $taxonomy,
-							'object_ids' => $post_id,
-						) );
-						$taxonomy_terms = ! $taxonomy_terms || is_wp_error( $taxonomy_terms ) ? array() : $taxonomy_terms;
 
-						foreach( $taxonomy_terms as $term ) {
-							// Add term
-							$terms = $this->include_term( $terms, $post_id, $taxonomy, $term, false );
+				// Build sanitized query.
+				global $wpdb;
 
-							// Add optional parent terms.
-							$parent_terms = $this->get_term_parents( $term );
-							foreach ( $parent_terms as $parent_term ) {
-								$terms = $this->include_term( $terms, $post_id, $taxonomy, $parent_term, true );
-							}
-						}
-					}
-				}
+				$where_post_ids = implode( ',', array_map( 'intval', $post_ids ) );
+				$where_taxonomies = implode( '","', array_map( 'sanitize_key', $taxonomies ) );
+
+				$query = 'SELECT tr.object_id, tt.taxonomy, tt.parent, t.term_id, t.slug, t.name FROM ' . $wpdb->prefix . 'term_relationships tr JOIN ' . $wpdb->prefix . 'term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id JOIN ' . $wpdb->prefix . 'terms t on tt.term_id = t.term_id WHERE tt.taxonomy IN ("' . $where_taxonomies . '") AND tr.object_id IN (' . $where_post_ids . ')';
+				
+				$results = $wpdb->get_results( $query, ARRAY_A );
+
+
+				// Loop over all results.
+				$terms = $this->handle_terms( $terms, $results );
 			}
 
 			$this->terms = $terms;
@@ -872,59 +854,100 @@ class WPUPG_Grid {
 
 		return $this->terms;
 	}
-
+	
 	/**
-	 * Get parents of a specific term.
+	 * Get terms from query reults.
 	 *
-	 * @since    3.0.0
+	 * @since	3.5.0
 	 */
-	public function include_term( $terms, $post_id, $taxonomy, $term, $as_parent = false ) {
-		$slug = urldecode( $term->slug );
+	public function handle_terms( $terms, $results, $depth = 0 ) {
+		$parents = array();
 
-		// Terms per post.
-		if ( $as_parent ) {
-			$terms['per_item'][ $post_id ][ $taxonomy ]['parent_terms'][] = $slug;
-		} else {
-			$terms['per_item'][ $post_id ][ $taxonomy ]['terms'][] = $slug;
-		}
-		
-		// Terms per taxonomy.
-		if ( !isset( $terms['per_taxonomy'][ $taxonomy ][ $slug ] ) ) {
-			$terms['per_taxonomy'][ $taxonomy ][ $slug ] = array(
-				'id' => $term->term_id,
-				'parent' => $term->parent,
-				'name' => $term->name,
-				'posts' => array(),
-				'child_posts' => array(),
-			);
-		}
-		if ( $as_parent ) {
-			$terms['per_taxonomy'][ $taxonomy ][ $slug ]['child_posts'][] = $post_id;
-		} else {
-			$terms['per_taxonomy'][ $taxonomy ][ $slug ]['posts'][] = $post_id;
-		}
+		foreach ( $results as $result ) {
+			$item_id = intval( $result['object_id'] );
+			$taxonomy = $result['taxonomy'];
+			$term_id = intval( $result['term_id'] );
+			$parent = intval( $result['parent'] );
+			$slug = $result['slug'];
+			$name = $result['name'];
 
-		return $terms;
-	}
+			// Make sure arrays exist.
+			if ( ! isset( $terms['per_taxonomy'][ $taxonomy ] ) ) 			{ $terms['per_taxonomy'][ $taxonomy ] = array(); }
+			if ( ! isset( $terms['per_item'][ $item_id ] ) ) 				{ $terms['per_item'][ $item_id ] = array(); }
+			if ( ! isset( $terms['per_item'][ $item_id ][ $taxonomy ] ) ) {
+				$terms['per_item'][ $item_id ][ $taxonomy ] = array(
+					'terms' => array(),
+					'parent_terms' => array(),
+				);
+			}
+			if ( !isset( $terms['per_taxonomy'][ $taxonomy ][ $slug ] ) ) {
+				$terms['per_taxonomy'][ $taxonomy ][ $slug ] = array(
+					'id' => $term_id,
+					'parent' => $parent,
+					'name' => $name,
+					'posts' => array(),
+					'child_posts' => array(),
+				);
+			}
 
-	/**
-	 * Get parents of a specific term.
-	 *
-	 * @since    3.0.0
-	 * @param	 int 	$term 		Term to get the parents for.
-	 * @param	 array 	$parents 	Current list of known parents.
-	 */
-	public function get_term_parents( $term, $parents = array() ) {
-		if ( $term->parent ) {
-			$parent = get_term( $term->parent );
+			// Add in correct category.
+			if ( 0 === $depth ) {
+				$terms['per_item'][ $item_id ][ $taxonomy ]['terms'][] = $slug;
+				$terms['per_taxonomy'][ $taxonomy ][ $slug ]['posts'][] = $item_id;
+			} else {
+				$terms['per_item'][ $item_id ][ $taxonomy ]['parent_terms'][] = $slug;
+				$terms['per_taxonomy'][ $taxonomy ][ $slug ]['child_posts'][] = $item_id;
+			}
 
-			if ( $parent && ! is_wp_error( $parent ) ) {
-				$parents[] = $parent;				
-				return $this->get_term_parents( $parent, $parents );
+			// Check if there are further parents we need to get.
+			if ( $parent ) {
+				$parents[] = array(
+					'object_id' => $item_id,
+					'taxonomy' => $taxonomy,
+					'term_id' => $parent,
+				);
 			}
 		}
 
-		return $parents;
+		// Check if there are any parents we need to associate as well.
+		if ( count( $parents ) ) {
+			$parent_results = array();
+
+			$parent_ids = wp_list_pluck( $parents, 'term_id' );
+			$parent_terms = get_terms( array(
+				'include' => $parent_ids,
+			) );
+
+			if ( $parent_terms && ! is_wp_error( $parent_terms ) ) {
+				// Set term_id as key.
+				$keyed_parent_terms = array();
+				foreach ( $parent_terms as $parent_term ) {
+					$keyed_parent_terms[ $parent_term->term_id ] = $parent_term; 
+				}
+
+				foreach( $parents as $index => $parent ) {
+					if ( isset( $keyed_parent_terms[ $parent['term_id'] ] ) ) {
+						$parent_term = $keyed_parent_terms[ $parent['term_id'] ];
+
+						$parent_results[] = array(
+							'object_id' => $parent['object_id'],
+							'taxonomy' => $parent['taxonomy'],
+							'term_id' => $parent['term_id'],
+							'parent' => $parent_term->parent,
+							'slug' => $parent_term->slug,
+							'name' => $parent_term->name,
+						);
+					}
+				}
+			}
+
+			// Recursive loop.
+			if ( count( $parent_results ) ) {
+				$terms = $this->handle_terms( $terms, $parent_results, $depth + 1 );
+			}
+		}
+
+		return $terms;
 	}
 
 	/**

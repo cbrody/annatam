@@ -1,14 +1,14 @@
-=== MetaSlider ===
+=== Responsive Slider by MetaSlider - Slider and Carousel Plugin for WordPress ===
 Contributors: matchalabs, DavidAnderson, dnutbourne, kbat82
 Tags: slideshow, slider, image slider, carousel, gallery, flexslider, wordpress slider, nivoslider, rotating banner, responsive slideshow, seo slideshow, unsplash
 Requires at least: 3.5
-Stable tag: 3.17.6
+Stable tag: 3.19.0
 Requires PHP: 5.2
-Tested up to: 5.5
+Tested up to: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Easy to use WordPress slider plugin. Create SEO-optimized responsive slideshows with Nivo Slider, Flex Slider, Coin Slider and Responsive Slides.
+The best WordPress slider plugin. Easily create beautiful, responsive sliders and carousels with image, video, post feed, product, and layer slides.
 
 == Description ==
 
@@ -103,6 +103,12 @@ Find out more at <a href="https://www.metaslider.com">metaslider.com</a>
 
 Follow us on Twitter: [@wpmetaslider](https://twitter.com/wpmetaslider)
 
+**Privacy Policy:**
+
+MetaSlider uses the Appsero SDK to collect non-sensitive diagnostic data upon a user's confirmation. This data helps us to troubleshoot problems faster & make product improvements.
+
+MetaSlider only collects this diagnostic data when a user allows it via a notice in WP Admin or MetaSlider settings. View our [privacy policy](https://www.metaslider.com/privacy-policy).
+
 == Installation ==
 
 The easy way:
@@ -167,6 +173,53 @@ See https://www.metaslider.com/documentation/image-cropping/
 
 == Changelog ==
 
+= 3.19.0 - 2020/Nov/12 =
+
+* ACCESSIBILITY: Fixes typo on svg button in Simply Dark
+* TWEAK: Adds install date to optin Appsero report
+* TWEAK: Adds passive listener option to FlexSlider touch events
+* FIX: Processes library assets to minify and optimize (production ready)
+
+= 3.18.9 - 2020/Nov/5 =
+
+* FIX: Adds polyfill for WP 4.5 wp_add_inline_script
+* FIX: Removes some non PHP 5.3 code from 3rd party lib
+
+= 3.18.8 - 2020/Nov/2 =
+
+* TWEAK: Pass callback function to Appsero instead of relying on caching.
+* TWEAK: Switches Appsero integration to only collected info on the user that logged in.
+* FIX: Adds PHP5.3 compatibility by removing array shorthand syntax
+
+= 3.18.7 - 2020/Oct/27 =
+
+* TWEAK: Clean up some of the Analytic specific items and reporting bugs. Note: no bugs related to improper handling.
+
+= 3.18.6 - 2020/Oct/26 =
+
+* FIX: Remove PHP 7.3 specific trailing commas
+
+= 3.18.5 - 2020/Oct/22 =
+
+* TWEAK: Moves the support related items to a separate page in prep to make it more robust.
+* TWEAK: Updates privacy policy and opt-in product analytics
+
+= 3.18.3/4 - 2020/Oct/15 =
+
+* TWEAK: Updates plugin name to better describe its use, but keep plugin page title simple
+
+= 3.18.2 - 2020/Oct/02 =
+
+* FIX: Scopes slideshow cache to site (for multi-site support)
+
+= 3.18.1 - 2020/Sept/21 =
+
+* FIX: Removes Nivo loading gif and add back specificity
+
+= 3.18.0 - 2020/Sept/05 =
+
+* FEATURE/FIX: Updates UI elements and updates icon set (FA was causing issues on some hosts)
+
 = 3.17.6 - 2020/Aug/31 =
 
 * FIX: Fixes issue with build script and script version number
@@ -186,7 +239,7 @@ See https://www.metaslider.com/documentation/image-cropping/
 * TWEAK: Limits loading admin specific code from the front end
 * TWEAK: Switches to a new CI and build process (report any issues to our support channel)
 * TWEAK: Adds extra permission_callback check to settings routes
-* SECURITY: Adds extra filtering of captions using HTML Purifier (http://htmlpurifier.org/). Reminder: Only users with `edit_others_posts` capability can edit slideshows, which is a role that may be added by third party plugins (ex. Shop Managers from WooCommerce have this role). If you need to limit who can edit your slideshows, then you can update this with the filter `metaslider_capability`, for example to `manage_options`. Contact us in support for more information.
+* SECURITY: Adds extra filtering of captions using HTML Purifier (http://htmlpurifier.org/). Reminder: Only users with `edit_others_posts` capability can edit slideshows, which is a role that may be added by third party plugins (ex. Shop Managers from WooCommerce have this role). If you need to limit who can edit your slideshows, then you can update this with the filter `metaslider_capability`, for example to `manage_options`. Contact us in support for more information. (Thanks to Fortinet Fortiguard Labs)
 
 = 3.17.1 - 2020/Aug/13 =
 

@@ -107,8 +107,7 @@ if ( function_exists( 'wp_body_open' ) ) {
 
 						<?php if ( 'four' !== spacious_options( 'spacious_header_display_type', 'one' ) ) : ?>
 							<div class="header-action">
-								<?php
-								spacious_cart_icon();
+							<?php
 
 								if ( 1 === spacious_options( 'spacious_header_search_icon', 0 ) ) :
 									?>
@@ -130,7 +129,7 @@ if ( function_exists( 'wp_body_open' ) ) {
 
 					</div><!-- #header-right-section -->
 					<div id="header-left-section"><!--CB 20200525 Logo and subscribe button -->
-					<div id="header-left-right"><a href="#mailmunch-pop-906684"><button id="popup-button">Stay in touch</button></a></div>
+					<div id="header-left-right"></div>
 					<?php
 						if ( ( 'both' === spacious_options( 'spacious_show_header_logo_text', 'text_only' ) || 'logo_only' === spacious_options( 'spacious_show_header_logo_text', 'text_only' ) ) ) { ?>
 							<div id="header-logo-image">

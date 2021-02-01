@@ -21,7 +21,6 @@ function Sidebar( props ) {
     return (
         <Fragment>
             <PluginSidebarMoreMenuItem
-                name="menu-wp-ultimate-post-grid"
                 target="sidebar-wp-ultimate-post-grid"
                 icon="grid-view"
             >
