@@ -185,8 +185,8 @@ class WPUPG_Item_Post extends WPUPG_Item {
 	public function post_type() {
 		return $this->post->post_type;
 	}
-	public function terms( $key ) {
-		return get_the_terms( $this->post, $key );
+	public function terms( $key, $args = array() ) {
+		return wp_get_post_terms( $this->post->ID, $key, $args );
 	}
 	public function title() {
 		return $this->post->post_title;

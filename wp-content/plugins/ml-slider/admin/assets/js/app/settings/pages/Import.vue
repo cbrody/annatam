@@ -339,7 +339,7 @@ export default {
 			Slideshow.import(JSON.stringify([...slideshowData])).then(response => {
 				this.notifySuccess(
 					'metaslider-importing-slideshows-success',
-					this.__('Import successsful', 'ml-slider'), true)
+					this.__('Import successful', 'ml-slider'), true)
 			}).catch(error => {
 				this.notifyError('metaslider/import-error', error, true)
 			}).finally(() => {

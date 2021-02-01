@@ -11,7 +11,7 @@ import '../../css/admin/modal/general/fields.scss';
 
 import ErrorBoundary from 'Shared/ErrorBoundary';
 import { __wpupg } from 'Shared/Translations';
-const { hooks } = WPUltimatePostGrid.shared;
+const { hooks } = WPUltimatePostGrid['wp-ultimate-post-grid/dist/shared'];
 
 import Grid from './grid';
 import Menu from './menu';

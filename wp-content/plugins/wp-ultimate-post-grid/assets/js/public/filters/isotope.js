@@ -89,6 +89,20 @@ window.WPUPG_Filter_isotope = {
                     }
                 }
             },
+            clear() {
+                // Set all buttons as inactive.
+                for ( let button of this.buttons ) {
+                    button.classList.remove( 'active' );
+                }
+
+                // Activate All button if it's there.
+                if ( this.buttonAll ) {
+                    this.buttonAll.classList.add( 'active' );
+                }
+
+                // Set selections.
+                this.selected = {};
+            },
             buttonAll: false,
             onClickButton( button, forceActive = false, callback = false ) {
                 let clickedAllButton = button === this.buttonAll;

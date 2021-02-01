@@ -16,6 +16,13 @@ export default ( elemId, args ) => {
                     callback( data );
                 }
             }
+
+            // Global init event.
+            if ( 'initReady' === event ) {
+                window.dispatchEvent( new CustomEvent( 'wpupgInitReady', {
+                    detail: this,
+                } ) );
+            }
         },
         initEvents() {
             // Initial state.

@@ -29,6 +29,7 @@ const FieldFilter = (props) => {
                     // { value: 'slider', label: `${ __wpupg( 'Slider' ) }${ wpupg_admin.addons.premium ? '' : ` (${__wpupg( 'Premium Only' ) })` }`, },
                     { value: 'dropdown', label: `${ __wpupg( 'Dropdown' ) }${ wpupg_admin.addons.premium ? '' : ` (${__wpupg( 'Premium Only' ) })` }`, },
                     { value: 'text_search', label: `${ __wpupg( 'Text Search' ) }${ wpupg_admin.addons.premium ? '' : ` (${__wpupg( 'Premium Only' ) })` }`, },
+                    { value: 'clear', label: __wpupg( 'Clear Filter Selections Button' ) },
                 ]}
                 width="215px"
             />

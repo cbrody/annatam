@@ -1,0 +1,1083 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Passster\n"
+"POT-Creation-Date: 2020-09-28 18:54+0200\n"
+"PO-Revision-Date: 2020-09-28 18:54+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: content-protector.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: src/admin/class-ps-admin.php:61 src/admin/class-ps-settings.php:824
+msgid "Options"
+msgstr "Optionen"
+
+#: src/admin/class-ps-admin.php:70
+msgid "Cookie"
+msgstr "Cookie"
+
+#: src/admin/class-ps-admin.php:80
+msgid "Use Cookie"
+msgstr "Cookies verwenden"
+
+#: src/admin/class-ps-admin.php:89
+msgid "Cookie Duration"
+msgstr "Cookie Dauer"
+
+#: src/admin/class-ps-admin.php:90
+msgid ""
+"Duration (in days) for your cookie. Once a cookie expires, the user will "
+"have to enter the password again."
+msgstr ""
+"Dauer (in Tagen) für deinen Cookie. Sobald ein Cookie ausläuft, muss der "
+"Benutzer das Passwort erneut eingeben."
+
+#: src/admin/class-ps-admin.php:100
+msgid "Compatibility Mode"
+msgstr "Kompatibilitätsmodus"
+
+#: src/admin/class-ps-admin.php:110
+msgid "Reload after successful validation"
+msgstr "Neuladen nach erfolgreicher Validierung"
+
+#: src/admin/class-ps-admin.php:119
+msgid "AMP"
+msgstr "AMP"
+
+#: src/admin/class-ps-admin.php:129
+msgid "Activate AMP Support"
+msgstr "AMP Support aktivieren"
+
+#: src/admin/class-ps-admin.php:138
+msgid "Third-Party Support"
+msgstr "Drittanbieter-Support"
+
+#: src/admin/class-ps-admin.php:148
+msgid "Activate WPBakery Pagebuilder"
+msgstr "Aktiviere WPBakery Pagebuilder"
+
+#: src/admin/class-ps-admin.php:159
+msgid "Activate Elementor"
+msgstr "Aktiviere Elementor"
+
+#: src/admin/class-ps-admin.php:168
+msgid "Third-Party Shortcodes"
+msgstr "Drittanbieter Shortcodes"
+
+#: src/admin/class-ps-admin.php:169
+msgid ""
+"Add a comma separated list of shortcodes you want to use inside of Passster. "
+"Make sure to add the exact shortcode, in case of Contact Form 7 e.x: "
+"[contact-form-7 id=\"44\" title=\"Contact form 1\"]. An Example entry could "
+"be: [shortcode-1],[shortcode-2],[shortcode-3].<br><b>Only needed if you use "
+"use ajax for verification</b>. "
+msgstr ""
+"Füge eine komma-getrennte Liste an Shortcodes hinzu, die du in Passster "
+"nutzen möchtest. Achte darauf den Shortcode exakt einzugeben. Ein Beispiel "
+"mit Contact Form 7: [contact-form-7 id=\"44\" title=\"Contact form 1\"]. "
+"Eine Liste könnte dann so aussehen:  [shortcode-1],[shortcode-2],"
+"[shortcode-3].<br><b>Dies ist nur notwendig, wenn du den Ajax-Modus benutzt."
+"</b>. "
+
+#: src/admin/class-ps-admin.php:190
+msgid "Uninstall"
+msgstr "Deinstallieren"
+
+#: src/admin/class-ps-admin.php:199
+msgid "Delete Plugin Options On Uninstall"
+msgstr "Plugin-Optionen bei Deinstallation löschen"
+
+#: src/admin/class-ps-admin.php:200
+msgid ""
+"If checked, all plugin options will be deleted if the plugin is unstalled."
+msgstr ""
+"Wenn diese Option aktiviert ist, werden alle Plugin-Optionen gelöscht, wenn "
+"das Plugin deinstalliert wird."
+
+#: src/admin/class-ps-admin.php:207
+msgid "External Services"
+msgstr "Externe Dienste"
+
+#: src/admin/class-ps-admin.php:216
+msgid "Google Recaptcha"
+msgstr "Google reCAPTCHA"
+
+#: src/admin/class-ps-admin.php:225
+msgid "Recaptcha Version"
+msgstr "ReCaptcha Version"
+
+#: src/admin/class-ps-admin.php:238
+msgid "Site Key"
+msgstr "Site Key"
+
+#: src/admin/class-ps-admin.php:239
+msgid "Add your Google ReCaptcha Site Key"
+msgstr "Fügen Sie Ihre Google reCAPTCHA Site Key hinzu"
+
+#: src/admin/class-ps-admin.php:249
+msgid "Secret"
+msgstr "Secret"
+
+#: src/admin/class-ps-admin.php:250
+msgid "Add your Google ReCaptcha Secret"
+msgstr "Füge dein Google reCAPTCHA Secret hinzu"
+
+#: src/admin/class-ps-admin.php:260
+msgid "Language"
+msgstr "Sprache"
+
+#: src/admin/class-ps-admin.php:261
+msgid ""
+"Add your language shortcode. For example \"en\" for english or \"de\" for "
+"german. "
+msgstr ""
+"Füge deinen Sprachcode hinzu. Zum Beispiel \"en\" für Englisch oder \"de\" "
+"für Deutsch. "
+
+#: src/admin/class-ps-admin.php:272
+msgid "Bitly"
+msgstr "Bitly"
+
+#: src/admin/class-ps-admin.php:281
+msgid "Bitly Access Token"
+msgstr "Bitly Access Token"
+
+#: src/admin/class-ps-admin.php:282
+msgid ""
+"Add your bitly access token. You can get one here: <a target=\"_blank\" href="
+"\"https://bitly.com/\">bitly.com</a>"
+msgstr ""
+"Füge deinen Bitly Access Token hinzu. Du bekommst ihn hier: <a target="
+"\"_blank\" href=\"https://bitly.com/\">bitly.com</a>"
+
+#: src/admin/class-ps-admin.php:308
+msgctxt "post type general name"
+msgid "Password Lists"
+msgstr "Passwort Listen"
+
+#: src/admin/class-ps-admin.php:309
+msgctxt "post type singular name"
+msgid "Password List"
+msgstr "Passwort Liste"
+
+#: src/admin/class-ps-admin.php:310
+msgctxt "admin menu"
+msgid "Password Lists"
+msgstr "Passwort Listen"
+
+#: src/admin/class-ps-admin.php:311
+msgctxt "add new on admin bar"
+msgid "Password List"
+msgstr "Passwort Liste"
+
+#: src/admin/class-ps-admin.php:312
+msgctxt "content-protector"
+msgid "Add New"
+msgstr "Neue"
+
+#: src/admin/class-ps-admin.php:313
+msgid "Add New Password List"
+msgstr "Neue Passwort Liste hinzufügen"
+
+#: src/admin/class-ps-admin.php:314
+msgid "New Password List"
+msgstr "Neue Passwort Liste"
+
+#: src/admin/class-ps-admin.php:315
+msgid "Edit Password List"
+msgstr "Passwort Liste bearbeiten"
+
+#: src/admin/class-ps-admin.php:316
+msgid "View Password List"
+msgstr "Passwort Liste ansehen"
+
+#: src/admin/class-ps-admin.php:317
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:50
+msgid "Password Lists"
+msgstr "Passwort Listen"
+
+#: src/admin/class-ps-admin.php:318
+msgid "Search Password Lists"
+msgstr "Passwort Listen durchsuchen"
+
+#: src/admin/class-ps-admin.php:319
+msgid "Parent Password List"
+msgstr "Eltern-Passwort Liste"
+
+#: src/admin/class-ps-admin.php:320
+msgid "No Password Lists found."
+msgstr "Keine Passwort Listen gefunden."
+
+#: src/admin/class-ps-admin.php:321
+msgid "No Password Lists found in Trash."
+msgstr "Keine Passwort Liste im Papierkorb gefunden."
+
+#: src/admin/class-ps-admin.php:326
+msgid "Manageable password lists"
+msgstr "Steuerbare Passwort Listen"
+
+#: src/admin/class-ps-admin.php:352
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:109
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: src/admin/class-ps-admin.php:353 src/admin/class-ps-meta.php:47
+#: src/admin/class-ps-meta.php:138 src/admin/class-ps-meta.php:189
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:25
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:85
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:49
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:65
+msgid "Passwords"
+msgstr "Passwörter"
+
+#: src/admin/class-ps-admin.php:354
+msgid "Expires after usage"
+msgstr "Verschwindet nach Nutzung"
+
+#: src/admin/class-ps-admin.php:384
+msgid "on"
+msgstr "an"
+
+#. Plugin Name of the plugin/theme
+#: src/admin/class-ps-customizer.php:36 src/admin/class-ps-meta.php:50
+#: src/admin/class-ps-settings.php:815
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:7
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:20
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:60
+msgid "Passster"
+msgstr "Passster"
+
+#: src/admin/class-ps-customizer.php:41
+msgid "General"
+msgstr "Allgemein"
+
+#: src/admin/class-ps-customizer.php:54 src/admin/class-ps-customizer.php:283
+msgid "Background Color"
+msgstr "Hintergrundfarbe"
+
+#: src/admin/class-ps-customizer.php:55
+msgid "Change the background color of the form"
+msgstr "Ändere die Hintergrundfarbe des Formulars"
+
+#: src/admin/class-ps-customizer.php:67
+msgid "Padding"
+msgstr "Innenabstand"
+
+#: src/admin/class-ps-customizer.php:68
+msgid "Padding in PX"
+msgstr "Innenabstand (In Pixel)"
+
+#: src/admin/class-ps-customizer.php:80
+msgid "Margin"
+msgstr "Außenabstand"
+
+#: src/admin/class-ps-customizer.php:81
+msgid "Margin in PX"
+msgstr "Außenabstand (In Pixel)"
+
+#: src/admin/class-ps-customizer.php:89
+msgid "Form Instructions"
+msgstr "Formular Anweisungen"
+
+#: src/admin/class-ps-customizer.php:95 src/class-ps-public.php:521
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:81
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:157
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:144
+msgid "Protected Area"
+msgstr "Geschützter Bereich"
+
+#: src/admin/class-ps-customizer.php:98
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:80
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:155
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:142
+msgid "Headline"
+msgstr "Überschrift"
+
+#: src/admin/class-ps-customizer.php:109
+msgid "Headline Font Size"
+msgstr "Schriftgröße Überschrift"
+
+#: src/admin/class-ps-customizer.php:110 src/admin/class-ps-customizer.php:182
+msgid "Font size in PX"
+msgstr "Schriftgröße in Pixel"
+
+#: src/admin/class-ps-customizer.php:121
+msgid "Headline Font Weight"
+msgstr "Überschrift Schriftbreite"
+
+#: src/admin/class-ps-customizer.php:136
+msgid "Headline Color"
+msgstr "Farbe für die Überschrift"
+
+#: src/admin/class-ps-customizer.php:144 src/class-ps-public.php:535
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:86
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:166
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:163
+msgid "Enter your password.."
+msgstr "Gebe dein Passwort ein.."
+
+#: src/admin/class-ps-customizer.php:147
+#, fuzzy
+#| msgid "Placeholder Text"
+msgid "Placholder Text"
+msgstr "Platzhalter Text"
+
+#: src/admin/class-ps-customizer.php:155 src/class-ps-public.php:528
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:96
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:185
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:154
+msgid ""
+"This content is password-protected. Please verify with a password to unlock "
+"the content."
+msgstr ""
+"Dieser Inhalt ist passwortgeschützt. Bitte gebe dein Passwort ein um den "
+"Inhalt freizuschalten."
+
+#: src/admin/class-ps-customizer.php:158
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:182
+msgid "Instructions Text"
+msgstr "Anleitungen Text"
+
+#: src/admin/class-ps-customizer.php:166
+msgid "Sorry, there was an error."
+msgstr "Entschuldige, es gab einen Fehler."
+
+#: src/admin/class-ps-customizer.php:169
+#, fuzzy
+#| msgid "Error Message"
+msgid "Error Text"
+msgstr "Fehlermeldung"
+
+#: src/admin/class-ps-customizer.php:181
+msgid "Font Size"
+msgstr "Schriftgröße"
+
+#: src/admin/class-ps-customizer.php:193
+msgid "Font Weight"
+msgstr "Schriftstärke"
+
+#: src/admin/class-ps-customizer.php:208 src/admin/class-ps-customizer.php:253
+msgid "Text Color"
+msgstr "Schriftfarbe"
+
+#: src/admin/class-ps-customizer.php:221
+msgid "Password Typing"
+msgstr "Passwort Tippen"
+
+#: src/admin/class-ps-customizer.php:229
+msgid "Button"
+msgstr "Button"
+
+#: src/admin/class-ps-customizer.php:235 src/class-ps-public.php:542
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:91
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:175
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:173
+msgid "Submit"
+msgstr "Absenden"
+
+#: src/admin/class-ps-customizer.php:238
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:90
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:173
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:172
+msgid "Button Label"
+msgstr "Button Beschriftung"
+
+#: src/admin/class-ps-customizer.php:268
+msgid "Text Color (Hover)"
+msgstr "Textfarbe (Hover)"
+
+#: src/admin/class-ps-customizer.php:298
+msgid "Background Color (Hover)"
+msgstr "Hintergrundfarbe (Hover)"
+
+#: src/admin/class-ps-meta.php:48
+msgid "Advanced Options"
+msgstr "Erweiterte Optionen"
+
+#: src/admin/class-ps-meta.php:62
+msgid "Add a comma-separated list of passwords"
+msgstr "Füge eine komma-getrennte Liste mit Passwörtern in dieses Feld ein"
+
+#: src/admin/class-ps-meta.php:87
+msgid " Expire Passwords after usage"
+msgstr " Passwörter verschwinden nach Nutzung"
+
+#: src/admin/class-ps-meta.php:137 src/admin/class-ps-meta.php:157
+#: src/admin/class-ps-meta.php:184
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:22
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:60
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:70
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:71
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:82
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:98
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:108
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:37
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:112
+msgid "Password"
+msgstr "Passwort"
+
+#: src/admin/class-ps-meta.php:139 src/admin/class-ps-meta.php:195
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:26
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:86
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:135
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:53
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:76
+msgid "Password List"
+msgstr "Passwort Liste"
+
+#: src/admin/class-ps-meta.php:140 src/admin/class-ps-meta.php:158
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:23
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:61
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:83
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:99
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:41
+msgid "Captcha"
+msgstr "Captcha"
+
+#: src/admin/class-ps-meta.php:141
+#, fuzzy
+#| msgid "ReCaptcha"
+msgid "Recaptcha"
+msgstr "ReCaptcha"
+
+#: src/admin/class-ps-meta.php:142 src/admin/class-ps-meta.php:209
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:75
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:76
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:117
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:121
+msgid "API"
+msgstr "API"
+
+#: src/admin/class-ps-meta.php:164
+msgid "Full Page Protection"
+msgstr "Seiten-Schutz aktivieren"
+
+#: src/admin/class-ps-meta.php:165
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:89
+msgid "Activate Protection"
+msgstr "Schutz aktivieren"
+
+#: src/admin/class-ps-meta.php:172
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:78
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:94
+msgid "Protection Type"
+msgstr "Typ"
+
+#: src/admin/class-ps-meta.php:213
+msgid "Encrypted Link"
+msgstr "Verschlüsselter Link"
+
+#: src/admin/class-ps-meta.php:214
+msgid ""
+"Enter a password and get an encrypted link to unlock the restricted areas "
+"which are  protected by the same password. The link appears after you saved "
+"your post."
+msgstr ""
+"Gebe ein Passwort ein und du erhälst einen verschlüsselten Link mit dem "
+"geschützte Bereiche direkt freigeschalten werden. Dass Password zwischen der "
+"Eingabe hier und dem geschützen Bereich muss übereinstimmen. Der Link "
+"erscheint, nachdem du gespeichert hast."
+
+#: src/admin/class-ps-meta.php:217
+msgid "Use Bitly"
+msgstr "Aktiviere Bitly"
+
+#: src/admin/class-ps-meta.php:224
+msgid ""
+"To use Bitly to encrypt your links you have to provide an API key in "
+"Passster -> External Services"
+msgstr ""
+"Um Bitly zu nutzen musst du einen validen API-Key in Passster-> Externe "
+"Dienste eingeben"
+
+#: src/admin/class-ps-meta.php:227
+msgid "Password for link generation"
+msgstr "Password zur Link-Generierung"
+
+#: src/admin/class-ps-meta.php:238
+msgid "Your unlock URL"
+msgstr "Dine Freischalt-URL"
+
+#: src/admin/class-ps-meta.php:245
+msgid ""
+"With <b style=\"color:#7200e5\">Passster Pro</b> you can also use multiple "
+"passwords, Password Lists, Google ReCaptcha v2/v3 and link protection."
+msgstr ""
+"Mit <b style=\"color:#7200e5\">Passster Pro</b> kannst du auch mehrere "
+"Passwörter, Passwort-Listen, Google ReCatpcha v2/v3 und die Freischaltung "
+"via Link verwenden."
+
+#: src/admin/class-ps-settings.php:440
+msgid "Add new Password List"
+msgstr "Neue Passwort Liste hinzufügen"
+
+#: src/admin/class-ps-settings.php:493
+msgid "Copy Shortcode"
+msgstr "Shortcode kopieren"
+
+#: src/admin/class-ps-settings.php:510
+msgid "Copy Link"
+msgstr "Link kopieren"
+
+#: src/admin/class-ps-settings.php:719
+msgid "Choose File"
+msgstr "Datei auswählen"
+
+#: src/admin/class-ps-settings.php:740
+msgid "Choose Image"
+msgstr "Bild auswählen"
+
+#: src/class-ps-form.php:57
+msgid "Enter the solution"
+msgstr "Gib die Lösung ein"
+
+#: src/class-ps-form.php:80
+msgid "I'm not a bot"
+msgstr "Ich bin kein Roboter"
+
+#: src/class-ps-form.php:105
+msgid "Unlock"
+msgstr "Freischalten"
+
+#: src/class-ps-public.php:223 src/class-ps-public.php:413
+msgid "Invalid password."
+msgstr "Falsches Passwort."
+
+#: src/class-ps-public.php:289 src/class-ps-public.php:313
+msgid "Invalid recaptcha."
+msgstr "Falscher Captcha-Code."
+
+#: src/class-ps-public.php:689 src/class-ps-public.php:705
+msgid "Sorry, your captcha solution was wrong."
+msgstr "Entschuldige, dein Captcha war nicht korrekt."
+
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:8
+msgid "The Passster Beaver Builder Module"
+msgstr "Passster Braver Builder Modul"
+
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:9
+msgid "Content Protection"
+msgstr "Inhalte schützen"
+
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:19
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:57
+msgid "Select Type"
+msgstr "Typ wählen"
+
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:24
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:84
+msgid "ReCaptcha"
+msgstr "ReCaptcha"
+
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:32
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:126
+msgid "Multiple Passwords"
+msgstr "Mehrere Passwörter"
+
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:33
+msgid "Separate multiple passwords with a comma"
+msgstr "Fügen Sie mehrere Passwörter durch Komma getrennt hinzu"
+
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:85
+msgid "Placeholder Input"
+msgstr "Platzhalter Eingabe"
+
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:95
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:152
+msgid "Instruction Text"
+msgstr "Anleitungen Text"
+
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:101
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:132
+msgid "Protected Text"
+msgstr "Geschützter Text"
+
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:102
+msgid "This is your protected content."
+msgstr "Das ist dein geschützter Inhalt."
+
+#: src/pagebuilder/beaverbuilder/modules/passster/class-ps-module.php:112
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:68
+msgid "Protection"
+msgstr "Schutz"
+
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:110
+msgid "Enter your password"
+msgstr "Gebe dein Password ein"
+
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:119
+msgid "Enter your API"
+msgstr "API eingeben"
+
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:128
+msgid "Enter your passwords"
+msgstr "Gib deine Passwörter ein"
+
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:146
+msgid "Texts"
+msgstr "Texte"
+
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:164
+msgid "Input Placeholder"
+msgstr "Input Platzhalter"
+
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:192
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:201
+msgid "Protected Content"
+msgstr "Geschützter Inhalt"
+
+#: src/pagebuilder/elementor/class-ps-elementor-widget.php:203
+msgid "This content is your protected content"
+msgstr "Dieser Inhalt ist dein geschützter Inhalt"
+
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:32
+msgid "Protection type"
+msgstr "Restriktions-Typ"
+
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:45
+msgid "ReCatpcha"
+msgstr "ReCaptcha"
+
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:56
+msgid "Choose your protection type"
+msgstr "Wähle deinen Restriktions-Typ"
+
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:67
+msgid "Add multiple passwords separated by comma."
+msgstr "Fügen Sie mehrere Passwörter durch Komma getrennt hinzu."
+
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:79
+msgid "Choose your password list"
+msgstr "Wähle deine Passwort Liste"
+
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:92
+msgid "Activate protection?"
+msgstr "Schutz aktivieren?"
+
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:100
+msgid "Hide Password form"
+msgstr "Formular ausblenden"
+
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:103
+msgid ""
+"If activated it completely hides the output of Passster. If another password "
+"form with the same password is unlocked, it displays this content, too. You "
+"need the cookie from Passster to use it."
+msgstr ""
+"Wenn aktiviert, wird diese Zeile komplett ausgeblendet. Wenn eine andere "
+"Zeile mit dem gleichen Passwort freigeschalten wird, dann wird auch dieser "
+"Inhalt angezeigt. Du benötigst den Cookie von Passster dafür."
+
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:134
+msgid "This is your protected content!"
+msgstr "Das ist dein geschützter Inhalt!"
+
+#: src/pagebuilder/visual-composer/class-ps-visual-composer.php:162
+msgid "Placeholder Text"
+msgstr "Platzhalter Text"
+
+#. Description of the plugin/theme
+msgid "Plugin to password-protect portions of a Page or Post."
+msgstr "Plugin zum Schützen deines Inhalts."
+
+#. Author of the plugin/theme
+msgid "patrickposner"
+msgstr "patrickposner"
+
+#~ msgid "Deactivate Ajax (deprecated)"
+#~ msgstr "Deaktiviere Ajax (veraltet)"
+
+#~ msgid "Activate Visual Composer"
+#~ msgstr "Aktiviere Visual Composer"
+
+#, php-format
+#~ msgid "\"%1$s\" requires \"%2$s\" to be installed and activated."
+#~ msgstr "„%1$s“ benötigt „%2$s“ installiert und aktiviert."
+
+#~ msgid "Elementor Passster Extension"
+#~ msgstr "Elementor Passster Erweiterung"
+
+#~ msgid "Elementor"
+#~ msgstr "Elementar"
+
+#, php-format
+#~ msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
+#~ msgstr "„%1$s“ benötigt „%2$s“ in der Version %3$s oder höher."
+
+#~ msgid "Authentication"
+#~ msgstr "Authentifizierung"
+
+#~ msgid "Use this if you have multiple Passster elements per page"
+#~ msgstr ""
+#~ "Nutze dies, wenn du mehrere Passster Elemente auf einer Seite platzieren "
+#~ "möchtest"
+
+#~ msgid "Pagebuilder Support"
+#~ msgstr "Pagebuilder Support"
+
+#~ msgid ""
+#~ "This content is protected with a captcha. Please verify with the captcha "
+#~ "to unlock the content."
+#~ msgstr ""
+#~ "Dieser Inhalt ist passwortgeschützt. Bitte gib dein Passwort ein um den "
+#~ "Inhalt freizuschalten."
+
+#~ msgid "This content is protected!"
+#~ msgstr "Dieses Inhalt ist geschützt!"
+
+#~ msgid "Enter Password"
+#~ msgstr "Passwort eingeben"
+
+#~ msgid "This content is protected. Please enter your password to unlock."
+#~ msgstr ""
+#~ "Dieser Inhalt ist passwortgeschützt. Bitte gebe dein Passwort ein um den "
+#~ "Inhalt freizuschalten."
+
+#~ msgid "Build protected areas with Passster."
+#~ msgstr "Erstelle geschützte Bereiche mit Passster."
+
+#~ msgid "This content is protected."
+#~ msgstr "Dieser Inhalt ist geschützt."
+
+#~ msgid "Edit"
+#~ msgstr "Bearbeiten"
+
+#~ msgid "Delete"
+#~ msgstr "Löschen"
+
+#~ msgid "Active"
+#~ msgstr "Aktiv"
+
+#~ msgid "Inactive"
+#~ msgstr "Inaktiv"
+
+#~ msgid "Parameter"
+#~ msgstr "Parameter"
+
+#~ msgid "password_lists"
+#~ msgstr "password_lists"
+
+#~ msgid "Return to all password lists"
+#~ msgstr "Zurück zu allen Passwort Listen"
+
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#~ msgid "The title helps you identify the list later."
+#~ msgstr "Der Titel hilft die diese Liste später wieder zu identifizieren."
+
+#~ msgid "Save Password List"
+#~ msgstr "Passwort Liste speichern"
+
+#~ msgid "No"
+#~ msgstr "Nein"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
+
+#~ msgid "Want to use expire passwords option?"
+#~ msgstr "Einmal-Passwörter benutzen?"
+
+#~ msgid ""
+#~ "Use this little tool to <b>generate your shortcode</b>. Simply fill out "
+#~ "the fields, save your changes and copy your shortcode. It <b>does not</b> "
+#~ "influence your current shortcodes. "
+#~ msgstr ""
+#~ "Verwende den Shortcode Generator um deinen <b>Shortcode zu generieren</"
+#~ "b>. Fülle die Felder aus und speichere die Einstellungen. Dann kannst du "
+#~ "den Shortcode kopieren. "
+
+#~ msgid "Shortcode Generator"
+#~ msgstr "Shortcode Generator"
+
+#~ msgid "Add your Shortcode Password"
+#~ msgstr "Füge dein Passwort hinzu"
+
+#~ msgid "User Groups"
+#~ msgstr "Nutzerrollen"
+
+#~ msgid ""
+#~ "Add a comma separated list of user groups which should be able to bypass "
+#~ "the protection."
+#~ msgstr ""
+#~ "Füge mehrere Nutzerollen mit Komma getrennt ein, welche automatisch die "
+#~ "Restriktion umgehen können."
+
+#~ msgid "Users"
+#~ msgstr "Benutzer"
+
+#~ msgid ""
+#~ "Add a comma separated list of users which should be able to bypass the "
+#~ "protection."
+#~ msgstr ""
+#~ "Füge mehrere Nutzer mit Komma getrennt ein, welche automatisch die "
+#~ "Restriktion umgehen können."
+
+#~ msgid "Copy shortcode"
+#~ msgstr "Shortcode kopieren"
+
+#~ msgid "Captcha Code Length"
+#~ msgstr "Captcha Code Länge"
+
+#~ msgid ""
+#~ "Length of the generated code. For example 4 means a Code like \"A2cD\""
+#~ msgstr ""
+#~ "Länge des generierten Codes. 4 bedeutet zum Beispiel einen Code wie \"A2cD"
+#~ "\""
+
+#~ msgid "Width"
+#~ msgstr "Breite"
+
+#~ msgid "Width of the captcha image"
+#~ msgstr "Breite des Captcha-Bildes"
+
+#~ msgid "Height"
+#~ msgstr "Höhe"
+
+#~ msgid "Height of the captcha image"
+#~ msgstr "Höhe des Captcha-Bildes"
+
+#, fuzzy
+#~| msgid "Background Color"
+#~ msgid "Background color"
+#~ msgstr "Hintergrundfarbe"
+
+#~ msgid "add a background-color for your captcha"
+#~ msgstr "Füge eine Hintergrundfarbe für dein Captcha ein"
+
+#~ msgid "#FFFFFF"
+#~ msgstr "#FFFFFF"
+
+#~ msgid "Difficulty"
+#~ msgstr "Schwierigkeitsgrad"
+
+#~ msgid "Lines in background"
+#~ msgstr "Linien im Hintergrund"
+
+#~ msgid "Number of lines in the background"
+#~ msgstr "Anzahl der Linien im Hintergrund"
+
+#~ msgid "Lines in front"
+#~ msgstr "Linien im Vordergrund"
+
+#~ msgid "Number of lines in the front"
+#~ msgstr "Anzahl der Linien im Vordergrund"
+
+#~ msgid "Remove all lines and distortion effects from captcha image"
+#~ msgstr "Entferne alle Linien und Störungseffekte vom Captcha-Bild"
+
+#~ msgid "Use only numbers"
+#~ msgstr "Verwende nur Zahlen"
+
+#~ msgid "Link"
+#~ msgstr "Link"
+
+#~ msgid "Slug"
+#~ msgstr "Slug"
+
+#~ msgid ""
+#~ "Enter the page slug where the shortcode is placed which you want to "
+#~ "unlock."
+#~ msgstr ""
+#~ "Gebe denSlug der Seite ein, auf der der Shortcode platziert ist, den Sie "
+#~ "entsperren möchten."
+
+#~ msgid ""
+#~ "This should match your shortcode password. <br>The password will be "
+#~ "encrypted in the URL"
+#~ msgstr ""
+#~ "Dieses Passwort sollte mit dem Passwort des Shortcodes übereinstimmen. "
+#~ "Das Passwort wird verschlüsselt an die URL angehangen"
+
+#~ msgid "Bitly API (Optional)"
+#~ msgstr "Bitly API (optional)"
+
+#~ msgid ""
+#~ "You can shorten the ecrypted password link with bit.ly. So the given URL "
+#~ "is as short as possible."
+#~ msgstr ""
+#~ "Mit bit.ly kannst du deinen verschlüsselten Link kürzen. So ist die "
+#~ "angegebene URL so kurz wie möglich."
+
+#~ msgid "Your bitly access token"
+#~ msgstr "Dein Bitly Access Token"
+
+#~ msgid "Copy link"
+#~ msgstr "Link kopieren"
+
+#~ msgid "Addons"
+#~ msgstr "Addons"
+
+#~ msgid ""
+#~ "All Addons are included in the <b>pro version of Passster</b>. Activate "
+#~ "and use the advanced features to get the maximum of out of content "
+#~ "protection."
+#~ msgstr ""
+#~ "Alle Addons sind in der <b> pro-Version von passster </b> enthalten. "
+#~ "Aktiviere und nutze die erweiterten Funktionen, um das Maximum an "
+#~ "Möglichkeiten der Inhaltsrestriktion zu erhalten."
+
+#~ msgid "Explanation"
+#~ msgstr "Erklärung"
+
+#~ msgid ""
+#~ "The Multiple Passwords Addon allows you to add multiple passwords per "
+#~ "shortcode. You could also use the Password Generator with this addon."
+#~ msgstr ""
+#~ "Mit dem Multiple Passwörter Addon kannst du mehrere Passwörter pro "
+#~ "Shortcode hinzufügen."
+
+#~ msgid "Description"
+#~ msgstr "Beschreibung"
+
+#~ msgid "Activate Multiple Passwords"
+#~ msgstr "Mehrere Passwörter aktivieren"
+
+#~ msgid ""
+#~ "The User Addon add a role and and a user parameter to the passster "
+#~ "shortcode. So specified users roles or users can bypass the content "
+#~ "protection. Great for memberships or any kind of account based "
+#~ "restriction."
+#~ msgstr ""
+#~ "Das User Addon ergänzt den Passster Shortcode um die Parameter role und "
+#~ "user. Die spezifizierten Nutzerrollen und Benutzer werden automatisch für "
+#~ "den geschützten Bereich freigeschalten.  Eine tolle Option für Membership-"
+#~ "Seiten und alle Art von user-basierten Restriktionen."
+
+#~ msgid "Google ReCaptcha"
+#~ msgstr "Google ReCaptcha"
+
+#~ msgid ""
+#~ "Let users unlock your protected content with Google ReCaptcha. Simply add "
+#~ "your API Key and use the Shortcode Generator to generate the shortcode."
+#~ msgstr ""
+#~ "Lasse Benutzer deine geschützten Inhalte mit Google reCAPTCHA entsperren. "
+#~ "Füge einfach deinen API-Schlüssel hinzu und verwende den Shortcode-"
+#~ "Generator, um den Shortcode zu generieren."
+
+#~ msgid "Activate Google ReCaptcha"
+#~ msgstr "Google reCAPTCHA aktivieren"
+
+#~ msgid "Unlock via Link"
+#~ msgstr "Entsperren über Link"
+
+#~ msgid ""
+#~ "Let users unlock your protected content with a link. The passwords are "
+#~ "always encrypted in your URL. Additionally you can use your bit.ly "
+#~ "account to automatically shorten your link."
+#~ msgstr ""
+#~ "Lasse Benutzer deine geschützten Inhalte mit einem Link entsperren. Die "
+#~ "Passwörter werden verschlüsselt and die URL angehangen. Zusätzlich kannst "
+#~ "du dein Bit.ly-Konto nutzen, um deinen Link automatisch zu verkürzen."
+
+#~ msgid "Activate Unlock via Link"
+#~ msgstr "Entsperren über Link aktivieren"
+
+#~ msgid ""
+#~ "When you use a large set of passwords in your shortcode then create a "
+#~ "password list. After the list creation you can copy the shortcode and it "
+#~ "instead."
+#~ msgstr ""
+#~ "Wenn du eine große Menge an Passwörtern nutzen möchtest, dann erstelle "
+#~ "eine Passwort Liste. Nach der Erstellung einer Passwort Liste wird dir "
+#~ "direkt der fertige Shortcode zum Kopieren angezeigt."
+
+#~ msgid "Password lists"
+#~ msgstr "Passwort Listen"
+
+#~ msgid "Want to be a Pro?"
+#~ msgstr "Pro-Version gefällig?"
+
+#~ msgid "Create Password Lists"
+#~ msgstr "Passwort Listen erstellen"
+
+#~ msgid "Expire / One time passwords"
+#~ msgstr "Einmal Passwörter"
+
+#~ msgid "bit.ly URL Shortener"
+#~ msgstr "bit.ly URL Shortener"
+
+#~ msgid "All future addons"
+#~ msgstr "Alle künftigen Addons"
+
+#~ msgid "Awesome Support"
+#~ msgstr "Toller Support"
+
+#~ msgid "Get it now"
+#~ msgstr "Jetzt informieren"
+
+#~ msgid "Need help?"
+#~ msgstr "Du brauchst Hilfe?"
+
+#~ msgid ""
+#~ "I have an documention for every detail on the configuration of passster."
+#~ msgstr ""
+#~ "Ich habe eine umfangreiche Dokumention für die Einrichtung und "
+#~ "Konfiguration von Passster erstellt."
+
+#~ msgid "Read the Docs"
+#~ msgstr "Zur Dokumentation"
+
+#, php-format
+#~ msgid ""
+#~ "Thanks for using <b>Passster</b>! After adding a shortcode to your "
+#~ "content you can begin to modify text and design settings of Passster in "
+#~ "your <a href=\"%s\">customizer</a>."
+#~ msgstr ""
+#~ "Danke, dass du <b>Passster</b> benutzt! Nachdem du deinen ersten "
+#~ "Shortcode eingefügt hast, kannst du die Texte und das Design im  <a "
+#~ "href=„%s“>Customizer</a> bearbeiten."
+
+#~ msgid "All Password Lists"
+#~ msgstr "Alle Passwort Listen"
+
+#~ msgid "Something went wrong. Please try again."
+#~ msgstr "Etwas ist schief gelaufen. Bitte versuche es erneut."
+
+#~ msgid "View Passster settings"
+#~ msgstr "Passster Einstellungen ansehen"
+
+#~ msgid "Settings"
+#~ msgstr "Einstellungen"
+
+#, php-format
+#~ msgid ""
+#~ "This plugin can not be activated because it requires a PHP version "
+#~ "greater than %1$s. Your PHP version can be updated by your hosting "
+#~ "company."
+#~ msgstr ""
+#~ "Dieses Plugin konnte nicht aktiviert werden, da es eine PHP-Version höher "
+#~ "als %1$s. benötigt. Bitte kontaktiere deinen Hoster um diese Einstellung "
+#~ "vorzunehmen."
+
+#~ msgid "go back"
+#~ msgstr "Zurück"
+
+#, php-format
+#~ msgid ""
+#~ "This plugin can not be activated because it requires a WordPress version "
+#~ "greater than %1$s. Please go to Dashboard &#9656; Updates to gran the "
+#~ "latest version of WordPress ."
+#~ msgstr ""
+#~ "Dieses Plugin konnte nicht aktiviert werden, da es WordPress Version "
+#~ "größer als %1$s benötigt. Bitte gehe in dein Dashboard und aktualisiere "
+#~ "auf die neueste Version von WordPress."
+
+#~ msgid "Use Autofocus"
+#~ msgstr "Nutze Autofokus"
+
+#~ msgid "Captcha Code"
+#~ msgstr "Captcha-Code"

@@ -45,6 +45,7 @@ class WPUPG_Grid_Sanitizer {
 		if ( isset( $grid['layout_tablet_different'] ) ) 				{ $sanitized_grid['layout_tablet_different'] = $grid['layout_tablet_different'] ? true : false; }
 		if ( isset( $grid['link'] ) ) 									{ $sanitized_grid['link'] = $grid['link'] ? true : false; }
 		if ( isset( $grid['deeplinking'] ) ) 							{ $sanitized_grid['deeplinking'] = $grid['deeplinking'] ? true : false; }
+		if ( isset( $grid['metadata'] ) ) 								{ $sanitized_grid['metadata'] = $grid['metadata'] ? true : false; }
 
 		// Number fields.
 		if ( isset( $grid['layout_desktop_sizing_columns'] ) )	{ $sanitized_grid['layout_desktop_sizing_columns'] = intval( $grid['layout_desktop_sizing_columns'] ); }
@@ -60,10 +61,12 @@ class WPUPG_Grid_Sanitizer {
 		if ( isset( $grid['limit_posts_offset'] ) )				{ $sanitized_grid['limit_posts_offset'] = intval( $grid['limit_posts_offset'] ); }
 
 		// Text fields.
-		if ( isset( $grid['name'] ) ) 				{ $sanitized_grid['name'] = sanitize_text_field( $grid['name'] ); }
-		if ( isset( $grid['slug'] ) ) 				{ $sanitized_grid['slug'] = sanitize_title( $grid['slug'] ); }
-		if ( isset( $grid['order_custom_key'] ) ) 	{ $sanitized_grid['order_custom_key'] = sanitize_text_field( $grid['order_custom_key'] ); }
-		if ( isset( $grid['template'] ) ) 			{ $sanitized_grid['template'] = sanitize_key( $grid['template'] ); }
+		if ( isset( $grid['name'] ) ) 					{ $sanitized_grid['name'] = sanitize_text_field( $grid['name'] ); }
+		if ( isset( $grid['slug'] ) ) 					{ $sanitized_grid['slug'] = sanitize_title( $grid['slug'] ); }
+		if ( isset( $grid['order_custom_key'] ) ) 		{ $sanitized_grid['order_custom_key'] = sanitize_text_field( $grid['order_custom_key'] ); }
+		if ( isset( $grid['template'] ) ) 				{ $sanitized_grid['template'] = sanitize_key( $grid['template'] ); }
+		if ( isset( $grid['metadata_name'] ) ) 			{ $sanitized_grid['metadata_name'] = sanitize_text_field( $grid['metadata_name'] ); }
+		if ( isset( $grid['metadata_description'] ) ) 	{ $sanitized_grid['metadata_description'] = sanitize_text_field( $grid['metadata_description'] ); }
 
 		// HTML.
 		if ( isset( $grid['empty_message'] ) ) { $sanitized_grid['empty_message'] = self::sanitize_html( $grid['empty_message'] ); }

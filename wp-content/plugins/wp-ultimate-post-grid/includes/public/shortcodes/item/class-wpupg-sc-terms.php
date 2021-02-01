@@ -27,6 +27,28 @@ class WPUPG_SC_Terms extends WPUPG_Template_Shortcode {
 				'type' => 'text',
 				'help' => 'Key of the taxonomy you want to display. Use "category" for regular categories and "post_tag" for regular tags.',
 			),
+			'orderby' => array(
+				'default' => 'name',
+				'type' => 'dropdown',
+				'options' => array(
+					'id' => 'ID',
+					'name' => 'Name',
+					'slug' => 'Slug',
+					'count' => 'Count',
+					'description' => 'Description',
+					'parent' => 'Parent',
+					'term_group' => 'Term Group',
+					'term_id' => 'Term ID',
+				),
+			),
+			'order' => array(
+				'default' => 'asc',
+				'type' => 'dropdown',
+				'options' => array(
+					'asc' => 'Ascending',
+					'desc' => 'Descending',
+				),
+			),
 			'links' => array(
 				'type' => 'toggle',
 				'default' => '0',
@@ -116,7 +138,13 @@ class WPUPG_SC_Terms extends WPUPG_Template_Shortcode {
 		$atts = parent::get_attributes( $atts );
 
 		$item = WPUPG_Template_Shortcodes::get_item();
-		$terms = $item->terms( $atts['key'] );
+
+		$args = array(
+			'orderby' => $atts['orderby'],
+			'order' => $atts['order'],
+		);
+
+		$terms = $item->terms( $atts['key'], $args );
 		if ( ! $item || ! $terms || ! is_array( $terms ) ) {
 			return '';
 		}

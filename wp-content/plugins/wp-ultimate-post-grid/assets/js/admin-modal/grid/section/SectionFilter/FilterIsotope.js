@@ -5,6 +5,7 @@ import Field from 'Modal/field';
 import { __wpupg } from 'Shared/Translations';
 
 import ButtonStyle from '../Shared/ButtonStyle';
+import CustomTermsOrder from '../Shared/CustomTermsOrder';
 import CustomFieldOptions from '../Shared/CustomFieldOptions';
 
 const FilterIsotope = (props) => {
@@ -255,6 +256,10 @@ const FilterIsotope = (props) => {
                                 value: 'count_desc',
                                 label: __wpupg( 'Descending Count' ),
                             },
+                            {
+                                value: 'custom',
+                                label: __wpupg( 'Custom Order' ),
+                            },
                         ]}
                         label={ __wpupg( 'Term Order' ) }
                         help={ __wpupg( 'Order of the Isotope term buttons.' ) }
@@ -310,6 +315,19 @@ const FilterIsotope = (props) => {
                     }
                 </Fragment>
             ),
+        }
+
+        if ( 'custom' === options.term_order ) {
+            modes['filter_terms_order'] = {
+                label: __wpupg( 'Custom Terms Order' ),
+                block: (
+                    <CustomTermsOrder
+                        grid={ props.grid }
+                        options={ props.options }
+                        onChange={ props.onChange }
+                    />
+                ),
+            }
         }
     }
 

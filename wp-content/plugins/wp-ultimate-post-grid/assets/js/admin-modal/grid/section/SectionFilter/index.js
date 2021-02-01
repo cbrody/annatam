@@ -1,13 +1,16 @@
 import React, { Fragment } from 'react';
-const { hooks } = WPUltimatePostGrid.shared;
+const { hooks } = WPUltimatePostGrid['wp-ultimate-post-grid/dist/shared'];
 
 import EditMode from 'Modal/general/EditMode';
 import { __wpupg } from 'Shared/Translations';
 import General from './General';
+
+import FilterClear from './FilterClear';
 import FilterIsotope from './FilterIsotope';
 
 const SectionFilter = (props) => {
     const filterTypes = hooks.applyFilters( 'filterTypes', {
+        clear: FilterClear,
         isotope: FilterIsotope,
     } );
 

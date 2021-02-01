@@ -156,6 +156,9 @@ class WPUPG_Grid {
 		$grid['pagination'] = $this->pagination();
 
 		// Grid Other.
+		$grid['metadata'] = $this->metadata();
+		$grid['metadata_name'] = $this->metadata_name();
+		$grid['metadata_description'] = $this->metadata_description();
 		$grid['deeplinking'] = $this->deeplinking();
 		$grid['empty_message'] = $this->empty_message();
 
@@ -624,6 +627,15 @@ class WPUPG_Grid {
 	/**
 	 * Grid Other Fields.
 	 */
+	public function metadata() {
+		return $this->meta( 'metadata', false );
+	}
+	public function metadata_name() {
+		return $this->meta( 'metadata_name', '' );
+	}
+	public function metadata_description() {
+		return $this->meta( 'metadata_description', '' ); 
+	}
 	public function deeplinking() {
 		return $this->meta( 'deeplinking', true );
 	}
@@ -687,10 +699,18 @@ class WPUPG_Grid {
 			} else {
 				$args['meta_query'] = array(
 					array(
-						'key' => '_thumbnail_id',
-						'value' => '0',
-						'compare' => '>'
-					),
+						'relation' => 'OR',
+						array(
+							'key' => '_thumbnail_id',
+							'value' => '0',
+							'compare' => '>'
+						),
+						array(
+							'key' => 'wpupg_custom_image_id',
+							'value' => '0',
+							'compare' => '>'
+						),
+					)
 				);
 			}
 		}
@@ -844,7 +864,6 @@ class WPUPG_Grid {
 				
 				$results = $wpdb->get_results( $query, ARRAY_A );
 
-
 				// Loop over all results.
 				$terms = $this->handle_terms( $terms, $results );
 			}
@@ -868,7 +887,7 @@ class WPUPG_Grid {
 			$taxonomy = $result['taxonomy'];
 			$term_id = intval( $result['term_id'] );
 			$parent = intval( $result['parent'] );
-			$slug = $result['slug'];
+			$slug = rawurldecode( $result['slug'] );
 			$name = $result['name'];
 
 			// Make sure arrays exist.

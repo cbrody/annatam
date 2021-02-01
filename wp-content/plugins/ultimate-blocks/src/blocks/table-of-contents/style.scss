@@ -1,0 +1,87 @@
+@import "../../common";
+.ub_table-of-contents {
+	box-sizing: border-box;
+	transition: all 0.5s ease-in-out;
+	background-color: #fafafa;
+	border: 1px solid #dfdfdf;
+	padding: 30px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	display: grid;
+	ul,
+	ol {
+		margin-bottom: 0;
+		margin-left: 1.3em;
+		padding-inline-start: 0;
+		padding-left: 0;
+	}
+	ol {
+		list-style-type: none;
+		counter-reset: item;
+		margin: 0;
+		padding: 0;
+		> li {
+			display: table;
+			counter-increment: item;
+			&:before {
+				content: counters(item, ".") ". ";
+				display: table-cell;
+				padding-right: 0.6em;
+			}
+		}
+	}
+	li ol > li {
+		margin: 0;
+		&:before {
+			content: counters(item, ".") " ";
+		}
+	}
+	&-collapsed {
+		padding: 10px;
+		margin: 0;
+		max-width: fit-content;
+		max-width: -moz-fit-content;
+		.ub_table-of-contents-header {
+			margin-bottom: 0;
+		}
+	}
+	&-header {
+		text-align: center;
+		margin-bottom: 13px;
+		font-size: 20px;
+		font-weight: 500;
+		display: grid;
+		grid-template-columns: minmax(10px, 1fr) auto;
+		width: fit-content;
+		width: -moz-fit-content;
+		transition: all 0.5s ease-in-out;
+	}
+
+	&-header-toggle {
+		display: flex;
+		align-items: center;
+		padding-left: 5px;
+	}
+
+	@for $i from 1 through 3 {
+		&-#{$i}-column {
+			column-count: $i;
+		}
+	}
+
+	&-container {
+		transition: all 0.5s ease-in-out;
+		overflow: hidden;
+	}
+	.ub_table-of-contents-container ul > li:before {
+		content: none;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.ub_table-of-contents-1-column,
+	.ub_table-of-contents-2-column,
+	.ub_table-of-contents-3-column {
+		column-count: 1;
+	}
+}

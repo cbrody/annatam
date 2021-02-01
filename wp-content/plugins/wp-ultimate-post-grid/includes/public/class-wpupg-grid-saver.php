@@ -104,6 +104,9 @@ class WPUPG_Grid_Saver {
 			'pagination_type',
 			'pagination',
 			// Other.
+			'metadata',
+			'metadata_name',
+			'metadata_description',
 			'deeplinking',
 			'empty_message',
 		);

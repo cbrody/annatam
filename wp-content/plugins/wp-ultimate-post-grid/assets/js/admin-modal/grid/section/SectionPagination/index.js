@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-const { hooks } = WPUltimatePostGrid.shared;
+const { hooks } = WPUltimatePostGrid['wp-ultimate-post-grid/dist/shared'];
 
 import Field from 'Modal/field';
 import { __wpupg } from 'Shared/Translations';

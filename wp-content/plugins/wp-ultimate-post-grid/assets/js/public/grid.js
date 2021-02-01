@@ -5,6 +5,7 @@ import '../../css/public/filter.scss';
 import '../../css/public/grid.scss';
 import '../../css/public/pagination.scss';
 
+import './filters/clear';
 import './filters/isotope';
 import './pagination/pages';
 

@@ -60,7 +60,9 @@ class WPUPG_Manage_Modal {
 			|| 'et_theme_builder' === substr( $screen->id, -16 )
 			|| 'bulletproof-security' === substr( $screen->id, 0, 20 )
 			|| 'hustle' === $screen->parent_base
-			|| 'admin_page_newsletter' === substr( $screen->id, 0, 21 ) ) {
+			|| 'admin_page_newsletter' === substr( $screen->id, 0, 21 )
+			|| 'bookly-menu' === $screen->parent_base
+			|| 'WishListMember' === $screen->parent_base ) {
 			return true;
 		}
 

@@ -1,57 +1,47 @@
-=== Responsive Slider by MetaSlider - Slider and Carousel Plugin for WordPress ===
+=== Slider, Gallery, and Carousel by MetaSlider - Responsive WordPress Plugin ===
 Contributors: matchalabs, DavidAnderson, dnutbourne, kbat82
 Tags: slideshow, slider, image slider, carousel, gallery, flexslider, wordpress slider, nivoslider, rotating banner, responsive slideshow, seo slideshow, unsplash
 Requires at least: 3.5
-Stable tag: 3.19.0
+Stable tag: 3.20.0
 Requires PHP: 5.2
 Tested up to: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-The best WordPress slider plugin. Easily create beautiful, responsive sliders and carousels with image, video, post feed, product, and layer slides.
+The best slider, gallery, and carousel plugin for WordPress. Responsive and easy to use with images, videos, post feed, products, and layers.
 
 == Description ==
 
-Create powerful, SEO-optimized slideshows in minutes with the world's #1 slider plugin!
+Create a powerful, SEO-optimized slider, gallery, or carousel in minutes with the world’s #1 image and photo plugin!
 
 [vimeo https://vimeo.com/393891282]
 
 With WordPress’ most popular slider plugin, enhancing your blog or website couldn’t be easier: simply select images from your WordPress Media Library, drag and drop them into place, and then set the slide captions, links and SEO fields all from one page.
 
-**NEW: Easily search and download free images to your slideshow from Unsplash.com**
+With WordPress’s most popular slider and gallery plugin, enhancing your blog or website couldn’t be easier: simply select images and photos from your WordPress Media Library, and drag and drop them into place in your slider or gallery.
 
-Choose one of 4 different slideshow types, and use our provided short-code or template to embed the slideshows.
-
-Apply one of our professional slidehow designs to really make your website stand out.
-
-**Gutenberg compatible**
-
-**Included slideshow types:**
-
-* **Flex Slider 2** - responsive, 2 transition effects, carousel mode
-* **Nivo Slider** - responsive, 16 transition effects
-* **Responsive Slides** - responsive & incredibly light weight
-* **Coin Slider** - 4 transition effects
+MetaSlider sliders, galleries, and carousels are Gutenberg compatible.
 
 **Features**
 
-* Simple, easy to use interface - perfect for individual users, developers & clients!
-* Access to free photos via Unsplash.com
-* Create Responsive, SEO-optimized slideshows in seconds
-* Unrestricted support for image slides (supports caption, link, title text, alt text)
-* Full width slideshow support
-* Drag and drop slide reordering
-* Intelligent image cropping
-* Set image crop position
-* Themes - includes 11 free professional slideshow themes
-* Built in Gutenberg block, Widget and Shortcode
-* Loads of slideshow configuration options - transition effect, speed etc (per slideshow)
+* Four responsive slideshow types with 20+ transition effects: Flex Slider 2, Nivo Slider, Responsive Slides, Coin Slider
+* Simple, easy-to-use slider and gallery building interface to build beautiful image and photo sliders and galleries that are fast and responsive
+* Access to free images and photos via Unsplash.com for sliders, galleries, and carousels
+* Create a responsive, SEO-optimized slideshow or gallery in seconds
+* Unrestricted support for image and photo sliders and galleries
+* Full width slider and gallery support
+* Drag and drop slider and gallery reordering
+* Intelligent slider image and photo cropping
+* Set slider image and photo crop position
+* Themes – includes 11 free professional slideshow themes for sliders
+* Built in slider Gutenberg block, Widget and Shortcode
+* Loads of slider configuration options – transition effect, speed, etc. (per slideshow)
 * Fully localized
 * WordPress Multi Site compatible
 * Compatible with translation plugins (WPML, PolyLang & qTranslate)
 * Extensive developer API (hooks & filters)
-* Fast - only the minimum JavaScript/CSS is included on your page
-* Import/Export slideshows.
+* Fast – only the minimum JavaScript/CSS is included on your page to power your slider, gallery, or carousel
+* Import/Export slideshows
 * Free basic support (covering installation issues and theme/plugin conflicts)
 * Lightbox support with the [MetaSlider Lightbox](https://wordpress.org/plugins/ml-slider-lightbox/) add-on
 
@@ -165,13 +155,22 @@ See https://www.metaslider.com/documentation/image-cropping/
 == Screenshots ==
 
 1. MetaSlider - for live demos see https://www.metaslider.com/examples/
-2. Nivo Slider example
-3. Coin Slider example
-4. Flex Slider example
-5. Carousel Example
-6. Administration panel - selecting slides
+2. Gallery example - Create impressive galleries
+3. Includes 11 professional slider themes
+4. Free images - Direct from Unsplash.com
+5. Easily preview sliders from the admin
+6. Integrates directly in Gutenberg
 
 == Changelog ==
+
+
+= 3.20.0 - 2021/Jan/18 =
+* FEATURE: Adds the gallery feature
+* FIX: Fixes typo in API fallback fetch function
+
+= 3.19.1 - 2020/Dec/1 =
+* TWEAK: Adds option to filter HTML Purify
+* TWEAK: Updates Appsero dependency version
 
 = 3.19.0 - 2020/Nov/12 =
 

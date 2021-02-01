@@ -302,12 +302,18 @@ class WPUPG_Pagination_Pages {
 		$output .= 'color: ' . $style['text_active_color'] . ';';
 		$output .= '}';
 
-		// Active Item styling.
-		$output .= $item_selector . ':hover, ' . $item_selector . ':focus {';
-		$output .= 'outline: none;';
-		$output .= 'border-color: ' . $style['border_hover_color'] . ';';
-		$output .= 'background-color: ' . $style['background_hover_color'] . ';';
-		$output .= 'color: ' . $style['text_hover_color'] . ';';
+		// Focus Item styling.
+		$hover_styles = '';
+		$hover_styles .= 'outline: none;';
+		$hover_styles .= 'border-color: ' . $style['border_hover_color'] . ';';
+		$hover_styles .= 'background-color: ' . $style['background_hover_color'] . ';';
+		$hover_styles .= 'color: ' . $style['text_hover_color'] . ';';
+
+		$output .= $item_selector . ':focus {' . $hover_styles . '}';
+
+		// Hover Item, only with mouse pointer.
+		$output .= '@media (hover: hover) and (pointer: fine) {';
+		$output .= $item_selector . ':hover {' . $hover_styles . '}';
 		$output .= '}';
 
 		$output .= '</style>';

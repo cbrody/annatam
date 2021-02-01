@@ -3,7 +3,7 @@ Contributors: BrechtVds
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QG7KZMGFU325Y
 Tags: grid, isotope, filter, custom post type
 Requires at least: 3.5
-Tested up to: 5.5
+Tested up to: 5.6
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -78,6 +78,15 @@ Check out the [WP Ultimate Post Grid demo site](https://bootstrapped.ventures/wp
 5. Different free templates that are fully responsive and work on desktop, tablet and mobile
 
 == Changelog ==
+= 3.6.0 =
+* Feature: Clear all selections button
+* Feature: Output ItemList metadata for grid items
+* Feature: Change term order in Template Editor
+* Improvement: Trigger global JS event on grid init
+* Fix: Filter problem with non-latin characters
+* Fix: Sticky hover button color on mobile
+* Fix: Wishlist Member compatibility problem
+
 = 3.5.1 =
 * Fix: Filters not working correctly in some environments
 * Fix: Plugin sidebar problem in Gutenberg after unpinning
@@ -292,6 +301,9 @@ Check out the [WP Ultimate Post Grid demo site](https://bootstrapped.ventures/wp
 * Very first version of this plugin
 
 == Upgrade notice ==
+= 3.6.0 =
+Update for better compatibility and some new features
+
 = 3.5.1 =
 Update to prevent filter problems
 

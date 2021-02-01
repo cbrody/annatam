@@ -1,4 +1,4 @@
-const { hooks } = WPUltimatePostGrid.shared;
+const { hooks } = WPUltimatePostGrid['wp-ultimate-post-grid/dist/shared'];
 
 import General from './General';
 import Grid from './Grid';

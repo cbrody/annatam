@@ -1,0 +1,28 @@
+{
+  "name": "patrickposner/passster",
+  "description": "the pro version of passster",
+  "type": "wordpress-plugin",
+  "require": {
+    "rych/phpass": "v2.0.1"
+  },
+  "license": "gpl",
+  "authors": [
+    {
+      "name": "Patrick Posner",
+      "email": "hello@patrickposner.de"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "src/admin/class-ps-settings.php",
+      "src/admin/class-ps-admin.php",
+      "src/admin/class-ps-customizer.php",
+      "src/admin/class-ps-meta.php",
+      "src/class-ps-conditional.php",
+      "src/class-ps-helper.php",
+      "src/class-ps-form.php",
+      "src/class-ps-public.php"
+    ],
+    "files": []
+  }
+}

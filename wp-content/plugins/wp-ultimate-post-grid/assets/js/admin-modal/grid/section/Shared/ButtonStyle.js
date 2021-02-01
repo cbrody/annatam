@@ -6,6 +6,31 @@ import { __wpupg } from 'Shared/Translations';
 const ButtonStyle = (props) => {
     const { style } = props;
 
+    const states = props.hasOwnProperty( 'states' ) ? props.states : {
+        default: __wpupg( 'Default' ),
+        active: __wpupg( 'Active' ),
+        hover: __wpupg( 'Hover' ),
+    };
+
+    const getColorsForStates = ( prefix ) => {
+        let colors = [];
+
+        for ( let state of Object.keys( states ) ) {
+            const key = 'default' === state ? '' : state;
+            const label = states[ state ];
+
+            const option = `${prefix}_${ key ? key + '_' : '' }color`;
+
+            colors.push({
+                label,
+                value: style[ option ],
+                onChange: ( value ) => { props.onChange({ [ option ]: value }); }
+            });
+        }
+
+        return colors;
+    };
+
     return (
         <Fragment>
             <Field
@@ -18,44 +43,12 @@ const ButtonStyle = (props) => {
             />
             <Field
                 type="colors"
-                colors={[
-                    {
-                        label: __wpupg( 'Default' ),
-                        value: style.background_color,
-                        onChange: ( value ) => { props.onChange({ background_color: value }); }
-                    },
-                    {
-                        label: __wpupg( 'Active' ),
-                        value: style.background_active_color,
-                        onChange: ( value ) => { props.onChange({ background_active_color: value }); }
-                    },
-                    {
-                        label: __wpupg( 'Hover' ),
-                        value: style.background_hover_color,
-                        onChange: ( value ) => { props.onChange({ background_hover_color: value }); }
-                    }
-                ]}
+                colors={ getColorsForStates( 'background' ) }
                 label={ __wpupg( 'Background Color' ) }
             />
             <Field
                 type="colors"
-                colors={[
-                    {
-                        label: __wpupg( 'Default' ),
-                        value: style.text_color,
-                        onChange: ( value ) => { props.onChange({ text_color: value }); }
-                    },
-                    {
-                        label: __wpupg( 'Active' ),
-                        value: style.text_active_color,
-                        onChange: ( value ) => { props.onChange({ text_active_color: value }); }
-                    },
-                    {
-                        label: __wpupg( 'Hover' ),
-                        value: style.text_hover_color,
-                        onChange: ( value ) => { props.onChange({ text_hover_color: value }); }
-                    }
-                ]}
+                colors={ getColorsForStates( 'text' ) }
                 label={ __wpupg( 'Text Color' ) }
             />
             <Field
@@ -71,23 +64,7 @@ const ButtonStyle = (props) => {
                 &&
                 <Field
                     type="colors"
-                    colors={[
-                        {
-                            label: __wpupg( 'Default' ),
-                            value: style.border_color,
-                            onChange: ( value ) => { props.onChange({ border_color: value }); }
-                        },
-                        {
-                            label: __wpupg( 'Active' ),
-                            value: style.border_active_color,
-                            onChange: ( value ) => { props.onChange({ border_active_color: value }); }
-                        },
-                        {
-                            label: __wpupg( 'Hover' ),
-                            value: style.border_hover_color,
-                            onChange: ( value ) => { props.onChange({ border_hover_color: value }); }
-                        }
-                    ]}
+                    colors={ getColorsForStates( 'border' ) }
                     label={ __wpupg( 'Border Color' ) }
                 />
             }

@@ -33,7 +33,7 @@ export default class Preview extends Component {
         let oldGrid = JSON.parse( JSON.stringify( prevProps.grid ) );
 
         // Ignore grid fields.
-        const ignoreGridFields = [ 'name', 'slug' ];
+        const ignoreGridFields = [ 'name', 'slug', 'metadata', 'metadata_name', 'metadata_description' ];
         for ( let ignoreField of ignoreGridFields ) {
             delete newGrid[ ignoreField ];
             delete oldGrid[ ignoreField ];

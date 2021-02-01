@@ -190,6 +190,25 @@
             min-height: 100px;
         }
     }
+
+    .wpupg-admin-modal-field-order {
+        max-height: 200px;
+        max-width: 300px;
+        overflow: scroll;
+
+        .wpupg-admin-modal-field-order-item {
+            background-color: white;
+            border: 1px dotted black;
+            border-radius: 3px;
+
+            padding: 2px 5px;
+            margin-bottom: 5px;
+
+            &:hover {
+                border-style: solid;
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 782px) {

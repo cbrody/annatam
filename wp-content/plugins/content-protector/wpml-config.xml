@@ -1,0 +1,28 @@
+<wpml-config>
+  <custom-types>
+    <custom-type translate="0">password_lists</custom-type>
+  </custom-types>
+  <custom-fields>
+    <custom-field action="ignore">passster_protection_type</custom-field>
+    <custom-field action="ignore">passster_password</custom-field>
+    <custom-field action="ignore">passster_link</custom-field>
+    <custom-field action="ignore">passster_activate_protection</custom-field>
+    <custom-field action="ignore">passster_expire_passwords</custom-field>
+    <custom-field action="ignore">passster_passwords</custom-field>
+    <custom-field action="ignore">passster_activate_bitly</custom-field>
+    <custom-field action="ignore">passster_password_list</custom-field>
+  </custom-fields>
+  <admin-texts>
+    <key name="passster_advanced_settings"/>
+    <key name="passster_general_settings">
+      <key name="toggle_cookie"/>
+      <key name="passster_cookie_duration"/>
+      <key name="toggle_ajax"/>
+      <key name="toggle_amp"/>
+      <key name="toggle_vc"/>
+      <key name="toggle_elementor"/>
+      <key name="third_party_shortcodes"/>
+      <key name="passster_advanced_delete_options"/>
+    </key>
+  </admin-texts>
+</wpml-config>

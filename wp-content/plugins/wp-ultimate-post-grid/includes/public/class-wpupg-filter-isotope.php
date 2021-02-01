@@ -55,6 +55,7 @@ class WPUPG_Filter_Isotope {
 			'limit_terms' => array(),
 			'all_button_text' => __( 'All', 'wp-ultimate-post-grid' ),
 			'term_order' => 'alphabetical',
+			'custom_term_order' => array(),
 			'style' => array(
 				'font_size'			        => '14',
 				'background_color'          => '#2E5077',
@@ -125,7 +126,7 @@ class WPUPG_Filter_Isotope {
 				$sanitized_options['multiselect_type'] = $options['multiselect_type'];
 			}
 
-			$field_options = array( 'alphabetical', 'reverse_alphabetical', 'alphabetical_taxonomies', 'reverse_alphabetical_taxonomies', 'alphabetical_taxonomies_grouped', 'reverse_alphabetical_taxonomies_grouped', 'count_asc', 'count_desc' );
+			$field_options = array( 'alphabetical', 'reverse_alphabetical', 'alphabetical_taxonomies', 'reverse_alphabetical_taxonomies', 'alphabetical_taxonomies_grouped', 'reverse_alphabetical_taxonomies_grouped', 'count_asc', 'count_desc', 'custom' );
 			if ( isset( $options['term_order'] ) && in_array( $options['term_order'], $field_options, true ) ) {
 				$sanitized_options['term_order'] = $options['term_order'];
 			}
@@ -144,6 +145,15 @@ class WPUPG_Filter_Isotope {
 				foreach ( $options['limit_terms'] as $taxonomy => $terms ) {
 					$taxonomy = sanitize_key( $taxonomy );
 					$sanitized_options['limit_terms'][ $taxonomy ] = array_map( 'intval', $terms ); 
+				}
+			}
+
+			if ( isset( $options['custom_term_order'] ) ) {
+				$sanitized_options['custom_term_order'] = array();
+				
+				foreach ( $options['custom_term_order'] as $taxonomy => $terms ) {
+					$taxonomy = sanitize_key( $taxonomy );
+					$sanitized_options['custom_term_order'][ $taxonomy ] = array_map( 'intval', $terms ); 
 				}
 			}
 
@@ -374,6 +384,18 @@ class WPUPG_Filter_Isotope {
 				if ( in_array( $options['term_order'], array( 'count_desc', 'count_asc' ) ) ) {
 					$sort_key = str_pad( $count_number, 10, '0', STR_PAD_LEFT ) . ';' . $sort_key;
 				} elseif ( ! in_array( $options['term_order'], array( 'alphabetical', 'reverse_alphabetical' ) ) ) {
+					if ( 'custom' === $options['term_order'] ) {
+						$index = isset( $options['custom_term_order'][ $taxonomy ] ) ? array_search( $term['id'], $options['custom_term_order'][ $taxonomy ] ) : false;
+
+						if ( false !== $index ) {
+							$sort_key = str_pad( $index, 10, '0', STR_PAD_LEFT );
+						} else {
+							// Last, ordered by ID.
+							$sort_key = str_pad( $term['id'], 10, '1', STR_PAD_LEFT );
+						}
+					}
+
+					// Grouped by taxonomy.
 					$sort_key = $taxonomy . ';' . $sort_key;
 				}
 
@@ -382,7 +404,7 @@ class WPUPG_Filter_Isotope {
 		}
 
 		// Sort buttons (reverse) alphabetically.
-		if ( in_array( $options['term_order'], array( 'alphabetical', 'alphabetical_taxonomies', 'alphabetical_taxonomies_grouped', 'count_asc' ) ) ) {
+		if ( in_array( $options['term_order'], array( 'alphabetical', 'alphabetical_taxonomies', 'alphabetical_taxonomies_grouped', 'count_asc', 'custom' ) ) ) {
 			ksort( $button_output );
 		} else {
 			krsort( $button_output );
@@ -460,12 +482,18 @@ class WPUPG_Filter_Isotope {
 		$output .= 'color: ' . $style['text_active_color'] . ';';
 		$output .= '}';
 
-		// Active Item styling.
-		$output .= $item_selector . ':hover, ' . $item_selector . ':focus {';
-		$output .= 'outline: none;';
-		$output .= 'border-color: ' . $style['border_hover_color'] . ';';
-		$output .= 'background-color: ' . $style['background_hover_color'] . ';';
-		$output .= 'color: ' . $style['text_hover_color'] . ';';
+		// Focus Item styling.
+		$hover_styles = '';
+		$hover_styles .= 'outline: none;';
+		$hover_styles .= 'border-color: ' . $style['border_hover_color'] . ';';
+		$hover_styles .= 'background-color: ' . $style['background_hover_color'] . ';';
+		$hover_styles .= 'color: ' . $style['text_hover_color'] . ';';
+
+		$output .= $item_selector . ':focus {' . $hover_styles . '}';
+
+		// Hover Item, only with mouse pointer.
+		$output .= '@media (hover: hover) and (pointer: fine) {';
+		$output .= $item_selector . ':hover {' . $hover_styles . '}';
 		$output .= '}';
 
 		$output .= '</style>';

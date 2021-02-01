@@ -216,9 +216,51 @@ class WPUPG_Grid_Output {
 			$output .= '</div>';
 		}
 
+		// Optionally output metadata.
+		if ( $grid->metadata() && 1 < count( $items['metadata'] ) ) {
+			$output .= self::metadata( $grid, $items );
+		}
+
 		$output .= '</div>';
 
 		return $output;
+	}
+
+	/**
+	 * Output the grid metadata.
+	 *
+	 * @since    3.6.0
+	 * @param	 mixed $grid Grid to output the metadata for.
+	 * @param	 mixed $items Items metadata to output.
+	 */
+	public static function metadata( $grid, $items = array() ) {
+		$metadata = array(
+			'@context' => 'http://schema.org',
+			'@type' => 'ItemList',
+			'itemListElement' => array(),
+			'numberOfItems' => count( $items['metadata'] ),
+		);
+
+		// Add link to current post.
+		$post = get_post();
+		if ( $post ) {
+			$metadata['url'] = get_permalink( $post );
+		}
+
+		// Optionally add name and description.
+		if ( $grid->metadata_name() ) {
+			$metadata['name'] = wp_strip_all_tags( $grid->metadata_name() );
+		}
+		if ( $grid->metadata_description() ) {
+			$metadata['description'] = wp_strip_all_tags( $grid->metadata_description() );
+		}
+
+		// Add items.
+		foreach ( $items['metadata'] as $item ) {
+			$metadata['itemListElement'][] = $item;
+		}
+
+		return '<script type="application/ld+json">' . wp_json_encode( $metadata ) . '</script>';
 	}
 
 	/**
@@ -229,15 +271,29 @@ class WPUPG_Grid_Output {
 	 * @param	 mixed $args Optional arguments.
 	 */
 	public static function items( $grid, $args = array() ) {
+		$metadata = array();
 		$output = '';
 
 		// Get current postdata.
 		global $post;
 		$current_post = $post;
 
+		$counter = 1;
 		$ids = $grid->ids( $args );
 		foreach ( $ids as $id ) {
-			$output .= self::item( $grid, $id, $args );
+			$item = self::item( $grid, $id, $args );
+
+			$output .= $item['output'];
+
+			if ( $item['url'] ) {
+				$metadata[] = array(
+					'@type'    => 'ListItem',
+					'position' => $counter,
+					'url'      => $item['url'],
+				);
+
+				$counter++;
+			}
 		}
 
 		// Reset postdata to before the grid output.
@@ -247,6 +303,7 @@ class WPUPG_Grid_Output {
 		return array(
 			'ids' => $ids,
 			'html' => $output,
+			'metadata' => $metadata,
 		);
 	}
 
@@ -259,6 +316,9 @@ class WPUPG_Grid_Output {
 	 * @param	 mixed $args Optional arguments.
 	 */
 	public static function item( $grid, $item_id, $args = array() ) {
+		$output = '';
+		$url = false;
+
 		$item = WPUPG_Item_Manager::get_item( $item_id, $grid->type() );
 		$item = apply_filters( 'wpupg_output_item', $item, $grid, $args );
 
@@ -319,7 +379,10 @@ class WPUPG_Grid_Output {
 
 			// Don't actually add link when previewing.
 			if ( isset( $args['preview'] ) && $args['preview'] && $item->link( $grid ) ) {
-				return '<div class="' . implode( ' ', $classes ) . '" style="cursor: pointer;"' . $data_string .'>' . $html . '</div>';
+				return array(
+					'output' => '<div class="' . implode( ' ', $classes ) . '" style="cursor: pointer;"' . $data_string .'>' . $html . '</div>',
+					'metadata' => false,
+				);
 			}
 
 			// Check if this item has a link.
@@ -338,12 +401,16 @@ class WPUPG_Grid_Output {
 				$html = str_ireplace( '<a', '<span', $html );
 				$html = str_ireplace( '</a>', '</span>', $html );
 
-				return '<a class="' . implode( ' ', $classes ) . '" href="' . esc_attr( $link ) . '" target="' . esc_attr( $item->link_target( $grid ) ) . '"' . $rel . '' . $data_string .'>' . $html . '</a>';
+				$output = '<a class="' . implode( ' ', $classes ) . '" href="' . esc_attr( $link ) . '" target="' . esc_attr( $item->link_target( $grid ) ) . '"' . $rel . '' . $data_string .'>' . $html . '</a>';
+				$url = $link;
 			} else {
-				return '<div class="' . implode( ' ', $classes ) . '"' . $data_string .'>' . $html . '</div>';
+				$output = '<div class="' . implode( ' ', $classes ) . '"' . $data_string .'>' . $html . '</div>';
 			}
 		}
 
-		return '';
+		return array(
+			'output' => $output,
+			'url' => $url,
+		);
 	}
 }

@@ -6,6 +6,7 @@ import FieldColor from './FieldColor';
 import FieldColors from './FieldColors';
 import FieldColumns from './FieldColumns';
 import FieldDropdown from './FieldDropdown';
+import FieldOrder from './FieldOrder';
 import FieldRadio from './FieldRadio';
 import FieldSlug from './FieldSlug';
 import FieldFilter from './FieldFilter';
@@ -77,6 +78,11 @@ const fields = {
     ),
     dropdown: (props) => (
         <FieldDropdown
+            { ...props }
+        />
+    ),
+    order: (props) => (
+        <FieldOrder
             { ...props }
         />
     ),

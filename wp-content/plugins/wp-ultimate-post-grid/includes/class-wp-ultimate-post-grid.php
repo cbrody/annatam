@@ -31,7 +31,7 @@ class WP_Ultimate_Post_Grid {
 	 * @since    3.0.0
 	 */
 	private function define_constants() {
-		define( 'WPUPG_VERSION', '3.5.1' );
+		define( 'WPUPG_VERSION', '3.6.0' );
 		define( 'WPUPG_PREMIUM_VERSION_REQUIRED', '3.0.0' );
 		define( 'WPUPG_POST_TYPE', 'wpupg_grid' );
 		define( 'WPUPG_DIR', plugin_dir_path( dirname( __FILE__ ) ) );
@@ -85,6 +85,7 @@ class WP_Ultimate_Post_Grid {
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-blocks.php' );
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-button.php' );
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-filter.php' );
+		require_once( WPUPG_DIR . 'includes/public/class-wpupg-filter-clear.php' );
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-filter-isotope.php' );
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-grid.php' );
 		require_once( WPUPG_DIR . 'includes/public/class-wpupg-grid-layout.php' );

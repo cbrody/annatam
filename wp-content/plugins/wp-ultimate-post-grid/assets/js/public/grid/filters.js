@@ -16,12 +16,12 @@ export default ( elemId, args ) => {
     return {
         filters,
         filtersRelation: args.filters_relation,
-        getFilterString() {
+        getFilterString( withoutPagination = false ) {
             let selectors = [];
 
             // Get pagination selector.
             let paginationSelector = '';
-            if ( false !== this.pagination ) {
+            if ( false !== this.pagination && ! withoutPagination ) {
                 paginationSelector = this.pagination.getSelector();
             }
 
@@ -57,6 +57,17 @@ export default ( elemId, args ) => {
             }
 
             return filterString;
+        },
+        clearAll() {
+            // Clear all individual filters.
+            for ( let filter of this.filters ) {
+                if ( filter.hasOwnProperty( 'clear' ) ) {
+                    filter.clear();
+                }
+            }
+
+            // Actually filter after clearing.
+            this.filter();
         },
         filterPaused: false,
         pauseFilter() {
